@@ -1,0 +1,11 @@
+CREATE TABLE `PRESTADOR_HORARIO` (
+
+  `ID_PRESTADOR` int(11) NOT NULL,
+  `ID_HORARIO` int(11) NOT NULL,
+  PRIMARY KEY (`ID_PRESTADOR`,`ID_HORARIO`),
+  KEY `FK_ID_PRESTADOR` (`ID_PRESTADOR`),
+  KEY `FK_ID_HORARIO` (`ID_HORARIO`),
+  CONSTRAINT `fk_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
+  CONSTRAINT `fk_group` FOREIGN KEY (`group_id`) REFERENCES `groups` (`group_id`)
+  
+);

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Aplicación prototype para pruebas de concepto de framework 2.0 OSDE 
+	GPI Argentina S.A. Santiago Urrizola -->
+<hibernate-mapping>
+	<class name="ar.com.academia.entities.Socio" table="SOCIO">
+		<id name="id" column="ID_SOCIO" unsaved-value="0" type="int">
+			<generator class="native"></generator>
+		</id>	
+		<property name="numeroSocio" column="NUMERO_SOCIO" />
+		<property name="nombre" column="NOMBRE" />
+		<property name="apellido" column="APELLIDO" />
+		<property name="sexo" column="SEXO" />
+		<property name="estadoCivil" column="ESTADO_CIVIL" />
+		<property name="nombreConyuge" column="NOMBRE_CONYUGUE" />
+		<property name="cantidadHijos" column="CANTIDAD_HIJOS" />
+		<property name="dni" column="DNI" />
+		<property name="telefono" column="TELEFONO" />
+		<property name="direccion" column="DIRECCION" />
+		<property name="email" column="EMAIL" />
+		<property name="password" column="PASSWORD" />
+		
+		<list name="turnos" cascade="all">
+		   <key>
+		        <column name="ID_SOCIO"></column>
+		   </key>
+		   <list-index>
+		        <column name="ID_TURNO"></column>
+		   </list-index>
+		   <one-to-many class="ar.com.academia.entities.Turno"></one-to-many>
+		</list>
+		
+		
+ 		<many-to-one name="plan">  
+		   <column name="ID_PLAN"></column>
+		</many-to-one>
+		
+	</class>
+
+
+</hibernate-mapping>

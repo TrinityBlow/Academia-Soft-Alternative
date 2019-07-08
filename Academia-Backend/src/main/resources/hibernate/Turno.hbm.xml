@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Aplicación prototype para pruebas de concepto de framework 2.0 OSDE 
+	GPI Argentina S.A. Santiago Urrizola -->
+<hibernate-mapping>
+	<class name="ar.com.academia.entities.Turno" table="TURNO">
+		<id name="id" column="ID_TURNO" unsaved-value="0" type="int">
+			<generator class="native"></generator>
+		</id>	
+		<property name="nombre" column="NOMBRE" />
+		<property name="fechaYHoraDeLlegada" column="FECHA_Y_HORA_DE_LLEGADA" />
+		<property name="fechaYHoraDeInicioDeAtencion" column="FECHA_Y_HORA_DE_INICIO_DE_ATENCION" />
+		<property name="importeDelTurno" column="IMPORTE_DEL_TURNO" />
+		<property name="observaciones" column="OBSERVACIONES"></property>		
+		
+	 	<many-to-one name="socio">
+		   <column name="ID_SOCIO"></column>
+		</many-to-one>
+		
+		<many-to-one name="prestador"> 
+		   <column name="ID_PRESTADOR"></column> 
+		</many-to-one>
+		
+		<one-to-one name="reserva" class="ar.com.academia.entities.Reserva"></one-to-one>
+			
+	</class>
+	
+	
+</hibernate-mapping>

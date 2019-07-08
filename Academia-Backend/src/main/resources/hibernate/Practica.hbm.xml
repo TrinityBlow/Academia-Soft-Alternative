@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Aplicación prototype para pruebas de concepto de framework 2.0 OSDE 
+	GPI Argentina S.A. Santiago Urrizola -->
+<hibernate-mapping>
+	<class name="ar.com.academia.entities.Practica" table="PRACTICA">
+		<id name="id" column="ID_PRACTICA" unsaved-value="0" type="int">
+			<generator class="native"></generator>
+		</id>	
+		<property name="codigo" column="CODIGO_PRACTICA" />
+		<property name="descripcion" column="DESCRIPCION" />
+		
+		<list name="turnos" cascade="all">
+		   <key>
+		        <column name="ID_PRACTICA"></column>
+		   </key>
+		   <list-index>
+		        <column name="ID_TURNO"></column>
+		   </list-index>
+		   <one-to-many class="ar.com.academia.entities.Turno"></one-to-many>
+		</list>
+		
+		<set name="prestadores" table="PRESTADOR_PRACTICA" lazy="true" >
+            <key>
+                <column name="ID_PRACTICA" not-null="true" />
+            </key>
+            <many-to-many entity-name="ar.com.academia.entities.Prestador">
+                <column name="ID_PRESTADOR" not-null="true" />
+            </many-to-many>
+        </set>
+		
+	</class>
+
+
+</hibernate-mapping>

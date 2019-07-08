@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>Academia-java</groupId>
+		<artifactId>Academia</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<groupId>Academia-java</groupId>
+	<artifactId>Academia-Frontend</artifactId>
+	<version>1.0.0</version>
+	<packaging>war</packaging>
+	<name>Academia-Frontend</name>
+	<url>http://maven.apache.org</url>
+	
+	
+	<properties>
+		<!-- Generic properties -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<!-- Spring -->
+		<spring-framework.version>4.0.3.RELEASE</spring-framework.version>
+		<!-- Struts-->
+		<struts.version>2.3.16.2</struts.version>
+</properties>
+	
+
+	<dependencies>
+		<dependency>
+			<groupId>Academia-java</groupId>
+			<artifactId>Academia-Entities</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>Academia-java</groupId>
+			<artifactId>Academia-Services</artifactId>
+			<version>${pom.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Spring and Transactions -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+		
+		<!-- Struts2 -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-core</artifactId>
+			<version>${struts.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+			<version>${struts.version}</version>
+		</dependency>
+		
+		<!-- Dependencia Para JSP -->
+		<dependency>
+   	 	<groupId>javax.servlet</groupId>
+    		<artifactId>jstl</artifactId>
+    		<version>1.2</version>
+		</dependency>
+		
+		
+		
+	   		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-core</artifactId>
+		    <version>3.2.6.RELEASE</version>
+		</dependency>
+	     <dependency>  
+	        <groupId>org.springframework.security</groupId>  
+	        <artifactId>spring-security-web</artifactId>  
+	        <version>3.2.6.RELEASE</version>  
+	    </dependency>  
+	    <dependency>  
+	        <groupId>org.springframework.security</groupId>  
+	        <artifactId>spring-security-config</artifactId>  
+	        <version>3.2.6.RELEASE</version>  
+	    </dependency>  
+    
+    
+<!-- 		https://mvnrepository.com/artifact/org.apache.struts/struts2-dojo-plugin -->
+<!-- 		Se usan los tag de autocompletado el cual tiene implementado ajax -->
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.apache.struts</groupId> -->
+<!-- 		    <artifactId>struts2-dojo-plugin</artifactId> -->
+<!-- 		    <version>${struts.version}</version> -->
+<!-- 		</dependency> -->
+    
+				
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>javax.servlet-api</artifactId>
+	    <version>3.1.0</version>
+	    <scope>provided</scope>
+	</dependency>
+			
+	</dependencies>
+	
+	
+
+	<build>
+		<finalName>Academia-Frontend</finalName>
+	</build>
+</project>

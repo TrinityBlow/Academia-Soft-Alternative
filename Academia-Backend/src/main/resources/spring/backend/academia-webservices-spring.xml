@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Aplicación prototype para pruebas de concepto de framework 2.0 OSDE -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+				http://cxf.apache.org/core http://cxf.apache.org/schemas/core.xsd
+        		http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<description>Contexto para la definicion de Web Services</description>
+		
+	<import resource="classpath:META-INF/cxf/cxf.xml"/>
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+	<jaxws:client 
+		serviceClass="ar.com.academia.services.SocioService"
+		address="http://localhost:8080/Academia-Backend/webservices/SocioService"
+		id="socio.service"
+	/>
+	
+	<jaxws:client 
+		serviceClass="ar.com.academia.services.PrestadorService"
+		address="http://localhost:8080/Academia-Backend/webservices/PrestadorService"
+		id="prestador.service"
+	/>
+	
+	<jaxws:endpoint id="SocioProxyService" address="/SocioProxyService">
+		<jaxws:implementor>
+			<bean class="ar.com.softtek.academia.backend.services.impl.SocioServiceProxyImpl">
+				<property name="socioService" ref="socio.service" ></property>
+			</bean>
+		</jaxws:implementor>
+	</jaxws:endpoint>
+
+	<jaxws:endpoint id="SocioService" address="/SocioService">
+		<jaxws:implementor>
+			<bean id="socio.service.impl" class="ar.com.softtek.academia.backend.services.impl.SocioServiceImpl">
+				<property name="socioBO" ref="socio.bo" ></property>
+			</bean>
+		</jaxws:implementor>
+	</jaxws:endpoint>
+    
+    <jaxws:endpoint id="PrestadorService" address="/PrestadorService">
+		<jaxws:implementor>
+			<bean id="prestador.service.impl" class="ar.com.softtek.academia.backend.services.impl.PrestadorServiceImpl">
+				<property name="prestadorBO" ref="prestador.bo" ></property>
+			</bean>
+		</jaxws:implementor>
+	</jaxws:endpoint> 
+
+	
+	<jaxws:endpoint id="TurnoService" address="/TurnoService">
+		<jaxws:implementor>
+			<bean id="turno.service.impl" class="ar.com.softtek.academia.backend.services.impl.TurnoServiceImpl">
+				<property name="turnoBO" ref="turno.bo" ></property>
+			</bean>
+		</jaxws:implementor>
+	</jaxws:endpoint>
+
+	
+</beans>

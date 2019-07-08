@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd"> 
+ 
+<struts>
+    <!-- devMode is helpful when you want some extra logs for debugging -->
+    <constant name="struts.devMode" value="false" />
+    <!-- Global message resource;
+         Otherwise you will have seperate message resource for each Action
+    -->
+    <constant name="struts.custom.i18n.resources" value="messages" />
+    <!--
+        This is important if you are planning to have slashes in Action URLs
+        e.g. In this demo, employee is deleted using URL /delete/10
+        This this is set to false; then struts will try to find mapping for
+        URL "/10" instaed of "/delete/10"
+     -->
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+      
+    <!-- Normal Action mappings are defined here -->
+    <package name="default" namespace="/*" extends="struts-default">
+        <!-- Two things to Notice:
+             1) class is set to 'editEmployeeAction' which is bean defined by Spring context
+             2) We have given the method to be called here as well;
+        -->
+        
+	   <action name="LoginClass" class="com.struts2.LoginCheckingClass" method="execute">
+	     <result name="success">/LoginSuccessPage.jsp</result>
+	     <result name="Notsuccess">/Home.jsp</result>   
+	   </action>  
+	   
+        <action name="admin" class="com.ssh.actions.AdminAction" method="execute">
+        	<result name="success">/nuevo.jsp</result>
+        </action>
+        
+        <action name="login">  
+            <result>/login.jsp</result>  
+        </action> 
+	   
+        <action name="deleteSocio"  class="socio.action" method="deleteSocio">
+        	<result name="success" type="redirect">/listSocios</result>
+		</action>
+		
+		<action name="getSocio"  class="socio.action" method="obtenerSocio">
+        	<result name="success">/modificar.jsp</result>
+		</action>
+		
+		<action name="listSocios"  class="socio.action" method="listSocios">
+        	<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="agregarSocio" class="socio.action" method="addSocio" >
+          <result name="success" type="redirect">/listSocios</result>
+        </action>
+        
+        <action name="updateSocio"  class="socio.action" method="updateSocio">
+        	<result name="success" type="redirect">/listSocios</result>
+		</action>
+        
+    </package>
+     
+</struts>

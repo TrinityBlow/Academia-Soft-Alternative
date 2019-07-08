@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Aplicación prototype para pruebas de concepto de framework 2.0 OSDE 
+	GPI Argentina S.A. Santiago Urrizola -->
+<hibernate-mapping>
+	<class name="ar.com.academia.entities.Prestador" table="PRESTADOR">
+		<id name="id" column="ID_PRESTADOR" unsaved-value="0" type="int">
+			<generator class="native"></generator>
+		</id>	
+		
+		<property name="nombre" column="NOMBRE" />
+		<property name="apellido" column="APELLIDO" />
+		<property name="telefono" column="TELEFONO" />
+		<property name="email" column="EMAIL" />
+		 
+
+		<set name="horas" table="PRESTADOR_HORARIO" 
+        	inverse="false" lazy="true" fetch="select" cascade="all" >
+            <key>
+                <column name="ID_PRESTADOR" not-null="true" />
+            </key>
+            <many-to-many entity-name="ar.com.academia.entities.Horario">
+                <column name="ID_HORARIO" not-null="true" />
+            </many-to-many>
+        </set>
+        
+        <set name="practicas" table="PRESTADOR_PRACTICA" 
+        	inverse="false" lazy="true" fetch="select" cascade="all" >
+            <key>
+                <column name="ID_PRESTADOR" not-null="true" />
+            </key>
+            <many-to-many entity-name="ar.com.academia.entities.Practica">
+                <column name="ID_PRACTICA" not-null="true" />
+            </many-to-many>
+        </set>
+		
+		 <list name="turnos" cascade="all">
+		   <key>
+		        <column name="ID_PRESTADOR"></column>
+		   </key>
+		   <list-index>
+		        <column name="ID_TURNO"></column>
+		   </list-index>
+		   <one-to-many class="ar.com.academia.entities.Turno"></one-to-many>
+ 		</list> 
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	<description>Definiciones transaccionales de la aplicacion
+	</description>
+
+
+	<!-- ****** TX MANAGER ************ -->
+	<!-- Transaction manager a utilizar en la aplicacion, puede cambiarse por 
+		JTA -->
+	<bean id="spring.transaction.manager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="spring.hibernate.session.factory" />
+	</bean>
+
+	<!-- ********************** -->
+	<!-- CONFIGURACION BASE DE HIBERNATE -->
+	<!-- ********************** -->
+	<bean class="org.springframework.jndi.JndiObjectFactoryBean" id="spring.datasource">
+		<property name="jndiName" value="jdbc/osdeDS"/>		
+		<property name="proxyInterface" value="javax.sql.DataSource"/>		
+		<property name="resourceRef" value="true"/>	
+	</bean>
+
+
+
+<!-- 		<property name="jndiName" value="java:jdbc/osdeDS" /> -->
+
+	<!-- SessionFactory de Hiberante utilizado por los diferentes DAOs -->
+	<bean id="spring.hibernate.session.factory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="spring.datasource" />
+		<property name="hibernateProperties" ref="spring.hibernate.properties" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath*:**/*.hbm.xml</value>
+			</list>
+		</property>
+		<property name="mappingJarLocations">
+			<list>
+				<value>WEB-INF/lib/*Entities*.jar</value>
+			</list>
+		</property>
+	</bean>
+	<!-- Propiedades de configuracion de hibernate -->
+	<bean id="spring.hibernate.properties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="properties">
+			<props>
+				<!-- create borra toda la bd y la vuelve a crear -->
+				<!-- update actualiza el esquema con los hbm -->
+				<!-- validate no modifica la bd pero falla si hay cambios en los hbm -->
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.connection.release_mode">on_close</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</prop>
+				<prop key="hibernate.jdbc.fetch_size">100</prop>
+				<prop key="hibernate.jdbc.use_streams_for_binary">true</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>
