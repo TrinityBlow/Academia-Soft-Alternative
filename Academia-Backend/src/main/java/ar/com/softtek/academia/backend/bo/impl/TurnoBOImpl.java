@@ -2,6 +2,7 @@ package ar.com.softtek.academia.backend.bo.impl;
 
 import java.util.List;
 
+import ar.com.academia.dto.ReservaDTO;
 import ar.com.academia.dto.TurnoDTO;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.PersistenceException;
@@ -32,6 +33,8 @@ public class TurnoBOImpl implements TurnoBO{
 
 	public TurnoDTO crearTurno(TurnoDTO entidad) throws BusinessException {
 		try{
+//			ReservaDTO reserva = entidad.getReservaDTO();
+//			reserva.setTurnoDTO(entidad);
 			TurnoDTO turnoDTO = turnoDAO.saveTurno(entidad);
 			return turnoDTO;
 		} catch (PersistenceException  e){

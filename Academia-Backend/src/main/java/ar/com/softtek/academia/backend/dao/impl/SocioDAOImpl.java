@@ -13,6 +13,9 @@ import ar.com.academia.entities.exception.PersistenceException;
 import ar.com.softtek.academia.backend.dao.SocioDAO;
 import ar.com.softtek.academia.backend.dao.impl.mapper.SocioMapper;
 
+
+//Hibernate.initialize(proxy);
+
 public class SocioDAOImpl extends GenericDAOImpl<Socio> implements SocioDAO {
 
 	@Override
@@ -22,9 +25,11 @@ public class SocioDAOImpl extends GenericDAOImpl<Socio> implements SocioDAO {
 	
 	public List<SocioDTO> getAllSocios() throws PersistenceException{
 		try{
+		
 			List<SocioDTO> sociosDTO;
 			List<Socio> socios = this.getAll();
-			sociosDTO = SocioMapper.createSociosListDTO(socios);
+			sociosDTO = SocioMapper.mapListSocioToDTO(socios);
+
 			return sociosDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -36,7 +41,7 @@ public class SocioDAOImpl extends GenericDAOImpl<Socio> implements SocioDAO {
 		try{
 			SocioDTO socioDTO;
 			Socio socio = this.getById(id);
-			socioDTO = SocioMapper.socioToDTO(socio);
+			socioDTO = SocioMapper.mapSocioToDTO(socio);
 			return socioDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -47,9 +52,9 @@ public class SocioDAOImpl extends GenericDAOImpl<Socio> implements SocioDAO {
 	public SocioDTO saveSocio(SocioDTO entidad) throws PersistenceException {
 		try{
 			SocioDTO socioDTOAgregado;
-			Socio socioAgregar = SocioMapper.DTOToSocio(entidad);
+			Socio socioAgregar = SocioMapper.mapDTOToSocio(entidad);
 			this.save(socioAgregar);
-			socioDTOAgregado = SocioMapper.socioToDTO(socioAgregar);
+			socioDTOAgregado = SocioMapper.mapSocioToDTO(socioAgregar);
 			return socioDTOAgregado;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -59,7 +64,7 @@ public class SocioDAOImpl extends GenericDAOImpl<Socio> implements SocioDAO {
 	@Override
 	public void updateSocio(SocioDTO entidad) throws PersistenceException {
 		try{
-			Socio socioModificar = SocioMapper.DTOToSocio(entidad);
+			Socio socioModificar = SocioMapper.mapDTOToSocio(entidad);
 			this.update(socioModificar);
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -70,7 +75,7 @@ public class SocioDAOImpl extends GenericDAOImpl<Socio> implements SocioDAO {
 	@Override
 	public boolean deleteSocio(SocioDTO entidad) throws PersistenceException {
 		try{
-			Socio socioBorrar = SocioMapper.DTOToSocio(entidad);
+			Socio socioBorrar = SocioMapper.mapDTOToSocio(entidad);
 			boolean result = this.delete(socioBorrar);
 			return result;
 		} catch (PersistenceException e){
@@ -111,7 +116,7 @@ public class SocioDAOImpl extends GenericDAOImpl<Socio> implements SocioDAO {
     	resultsSocios = (List<Socio>)criteria.list();
 		session.close();
 	    
-		resultsDTO = SocioMapper.createSociosListDTO(resultsSocios);
+		resultsDTO = SocioMapper.mapListSocioToDTO(resultsSocios);
 		
 		return resultsDTO;
 	}

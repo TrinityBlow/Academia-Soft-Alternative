@@ -44,5 +44,28 @@ public class ReservaBOImpl implements ReservaBO{
 			throw new BusinessException();
 		}
 	}
+
+
+	@Override
+	public ReservaDTO crearReserva(ReservaDTO entidadDTO) throws BusinessException {
+		try{
+			ReservaDTO reservaDTO = reservaDAO.saveReserva(entidadDTO);
+			return reservaDTO;
+		} catch (PersistenceException  e){
+			throw new BusinessException();
+		}
+		
+	}
+
+
+	@Override
+	public boolean borrarReserva(int id) throws BusinessException {
+		try{
+			Boolean result = reservaDAO.delete(id);
+			return result;
+		} catch (PersistenceException  e){
+			throw new BusinessException();
+		}
+	}
 	
 }

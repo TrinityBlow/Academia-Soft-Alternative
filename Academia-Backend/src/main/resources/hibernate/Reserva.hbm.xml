@@ -6,16 +6,23 @@
 	GPI Argentina S.A. Santiago Urrizola -->
 <hibernate-mapping>
 	<class name="ar.com.academia.entities.Reserva" table="RESERVA">
-		<id name="id" column="ID_RESERVA" unsaved-value="0" type="int">
-			<generator class="native"></generator>
+	
+		<id name="id" unsaved-value="0" type="int">
+			<column name="ID_TURNO" />
+			<generator class="foreign">
+				<param name="property">turno</param>
+			</generator>
 		</id>	
+		
+		<one-to-one name="turno" class="ar.com.academia.entities.Turno"
+			constrained="true"></one-to-one>
+
 		<property name="fecha" column="FECHA" />
 				
 		<many-to-one name="horario"> 
 		   <column name="ID_HORARIO"></column> 
 		</many-to-one>
 							
-		<one-to-one name="turno" class="ar.com.academia.entities.Turno"></one-to-one>
 
 	</class>
 

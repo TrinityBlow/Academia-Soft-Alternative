@@ -51,4 +51,26 @@ public class ReservaServiceImpl implements ReservaService {
 			throw new ServiceException();
 		}
 	}
+
+	@Override
+	public boolean removeByIdReserva(int idReserva) throws ServiceException {
+
+		try{
+			Boolean result = reservaBO.borrarReserva(idReserva);
+			return result;
+		} catch (BusinessException c){
+			throw new ServiceException();
+		}
+	}
+
+	@Override
+	public int addReserva(ReservaDTO agregar) throws ServiceException {
+		try{
+			ReservaDTO reservaDTOAgregado;
+			reservaDTOAgregado = reservaBO.crearReserva(agregar);
+			return reservaDTOAgregado.getId();
+		} catch (BusinessException c){
+			throw new ServiceException();
+		}
+	}
 }

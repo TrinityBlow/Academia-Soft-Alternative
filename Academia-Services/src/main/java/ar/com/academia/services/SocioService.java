@@ -16,35 +16,35 @@ import ar.com.academia.entities.exception.ServiceException;
 public interface SocioService {
 
 	
-	@WebMethod(operationName = "Add")
-	@WebResult(name = "AddResult")
+	@WebMethod(operationName = "AddSocio")
+	@WebResult(name = "AddSocioResult")
 	public int add(
 		@WebParam(name = "socioAgregar")
 		SocioDTO agregar
 			) throws ServiceException;
 
 
-	@WebMethod(operationName = "GetAll")
-	@WebResult(name = "GetAllResult")
+	@WebMethod(operationName = "GetAllSocios")
+	@WebResult(name = "GetAllSociosResult")
 	public List<SocioDTO> getAll() throws ServiceException;
 
-	@WebMethod(operationName = "GetById")
-	@WebResult(name = "GetByIdResult")
+	@WebMethod(operationName = "GetByIdSocio")
+	@WebResult(name = "GetByIdSocioResult")
 	public SocioDTO getById(
 		@WebParam(name = "idSocio")
 		int idSocio
 			) throws ServiceException;
 
-	@WebMethod(operationName = "GetAllBySexo")
-	@WebResult(name = "GetAllBySexoResult")
+	@WebMethod(operationName = "GetAllSocioBySexo")
+	@WebResult(name = "GetAllSocioBySexoResult")
 	public List<SocioDTO> getByAllSexo(
 		@WebParam(name = "sexo")
 		String sexo
 			) throws ServiceException;
 	
 
-	@WebMethod(operationName = "RemoveById")
-	@WebResult(name = "RemoveByIdResult")
+	@WebMethod(operationName = "RemoveSocioById")
+	@WebResult(name = "RemoveSocioByIdResult")
 	public boolean removeById(
 		@WebParam(name = "idSocio")
 		int idSocio

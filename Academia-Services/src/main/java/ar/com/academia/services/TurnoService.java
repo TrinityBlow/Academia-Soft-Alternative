@@ -41,8 +41,8 @@ public interface TurnoService {
 		int idTurno
 			) throws ServiceException;
 	
-	@WebMethod(operationName = "CountAllSociosTurno")
-	@WebResult(name = "CountAllSociosTurnoResult")
+	@WebMethod(operationName = "CountAllTurnos")
+	@WebResult(name = "CountAllTurnosResult")
 	public int countTurnos() throws ServiceException;
 	
 

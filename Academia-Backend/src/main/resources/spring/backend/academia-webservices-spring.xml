@@ -59,6 +59,42 @@
 			</bean>
 		</jaxws:implementor>
 	</jaxws:endpoint>
+	
+		
+	<jaxws:endpoint id="HorarioService" address="/HorarioService">
+		<jaxws:implementor>
+			<bean id="horario.service.impl" class="ar.com.softtek.academia.backend.services.impl.HorarioServiceImpl">
+				<property name="horarioBO" ref="horario.bo" ></property>
+			</bean>
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+		
+	<jaxws:endpoint id="PlanService" address="/PlanService">
+		<jaxws:implementor>
+			<bean id="plan.service.impl" class="ar.com.softtek.academia.backend.services.impl.PlanServiceImpl">
+				<property name="planBO" ref="plan.bo" ></property>
+			</bean>
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+		
+	<jaxws:endpoint id="PracticaService" address="/PracticaService">
+		<jaxws:implementor>
+			<bean id="practica.service.impl" class="ar.com.softtek.academia.backend.services.impl.PracticaServiceImpl">
+				<property name="practicaBO" ref="practica.bo" ></property>
+			</bean>
+		</jaxws:implementor>
+	</jaxws:endpoint>
+	
+		
+	<jaxws:endpoint id="ReservaService" address="/ReservaService">
+		<jaxws:implementor>
+			<bean id="reserva.service.impl" class="ar.com.softtek.academia.backend.services.impl.ReservaServiceImpl">
+				<property name="reservaBO" ref="reserva.bo" ></property>
+			</bean>
+		</jaxws:implementor>
+	</jaxws:endpoint>
 
 	
 </beans>

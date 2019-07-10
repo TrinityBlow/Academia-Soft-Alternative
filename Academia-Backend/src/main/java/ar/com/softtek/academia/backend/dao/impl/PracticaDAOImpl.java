@@ -22,7 +22,7 @@ public class PracticaDAOImpl extends GenericDAOImpl<Practica> implements Practic
 		try{
 			List<PracticaDTO> practicasDTO;
 			List<Practica> practicas = this.getAll();
-			practicasDTO = PracticaMapper.createPracticasListDTO(practicas);
+			practicasDTO = PracticaMapper.mapListPracticaToDTO(practicas);
 			return practicasDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -34,7 +34,7 @@ public class PracticaDAOImpl extends GenericDAOImpl<Practica> implements Practic
 		try{
 			PracticaDTO practicaDTO;
 			Practica practica = this.getById(id);
-			practicaDTO = PracticaMapper.practicaToDTO(practica);
+			practicaDTO = PracticaMapper.mapPracticaToDTO(practica);
 			return practicaDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();

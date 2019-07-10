@@ -9,9 +9,6 @@
 		<id name="id" column="ID_TURNO" unsaved-value="0" type="int">
 			<generator class="native"></generator>
 		</id>	
-		<property name="nombre" column="NOMBRE" />
-		<property name="fechaYHoraDeLlegada" column="FECHA_Y_HORA_DE_LLEGADA" />
-		<property name="fechaYHoraDeInicioDeAtencion" column="FECHA_Y_HORA_DE_INICIO_DE_ATENCION" />
 		<property name="importeDelTurno" column="IMPORTE_DEL_TURNO" />
 		<property name="observaciones" column="OBSERVACIONES"></property>		
 		
@@ -23,7 +20,12 @@
 		   <column name="ID_PRESTADOR"></column> 
 		</many-to-one>
 		
-		<one-to-one name="reserva" class="ar.com.academia.entities.Reserva"></one-to-one>
+		<many-to-one name="practica"> 
+		   <column name="ID_PRACTICA"></column> 
+		</many-to-one>
+		
+		<one-to-one name="reserva" class="ar.com.academia.entities.Reserva"
+			cascade="save-update"></one-to-one>
 			
 	</class>
 	

@@ -22,7 +22,7 @@ public class HorarioDAOImpl extends GenericDAOImpl<Horario> implements HorarioDA
 		try{
 			List<HorarioDTO> horariosDTO;
 			List<Horario> horarios = this.getAll();
-			horariosDTO = 	HorarioMapper.createHorariosListDTO(horarios);
+			horariosDTO = 	HorarioMapper.mapListHorariosToDTO(horarios);
 			return horariosDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -34,7 +34,7 @@ public class HorarioDAOImpl extends GenericDAOImpl<Horario> implements HorarioDA
 		try{
 			HorarioDTO horarioDTO;
 			Horario horario = this.getById(id);
-			horarioDTO = HorarioMapper.horarioToDTO(horario);
+			horarioDTO = HorarioMapper.mapHorarioToDTO(horario);
 			return horarioDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();

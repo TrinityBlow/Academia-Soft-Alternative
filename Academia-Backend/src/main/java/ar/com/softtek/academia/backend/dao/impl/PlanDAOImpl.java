@@ -22,7 +22,7 @@ public class PlanDAOImpl extends GenericDAOImpl<Plan> implements PlanDAO {
 		try{
 			List<PlanDTO> planesDTO;
 			List<Plan> planes = this.getAll();
-			planesDTO = PlanMapper.createPlanesListDTO(planes);
+			planesDTO = PlanMapper.mapListPlanToDTO(planes);
 			return planesDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -34,7 +34,7 @@ public class PlanDAOImpl extends GenericDAOImpl<Plan> implements PlanDAO {
 		try{
 			PlanDTO planDTO;
 			Plan plan = this.getById(id);
-			planDTO = PlanMapper.planToDTO(plan);
+			planDTO = PlanMapper.mapPlanToDTO(plan);
 			return planDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();

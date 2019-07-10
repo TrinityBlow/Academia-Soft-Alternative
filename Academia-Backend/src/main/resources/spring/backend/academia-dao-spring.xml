@@ -18,7 +18,24 @@
 	<bean id="prestadorDAO" class="ar.com.softtek.academia.backend.dao.impl.PrestadorDAOImpl">
 		<property name="sessionFactory" ref="spring.hibernate.session.factory"/>
 	</bean>
+	
 	<bean id="turno.dao" class="ar.com.softtek.academia.backend.dao.impl.TurnoDAOImpl">
+		<property name="sessionFactory" ref="spring.hibernate.session.factory" />
+	</bean>
+	
+	<bean id="horario.dao" class="ar.com.softtek.academia.backend.dao.impl.HorarioDAOImpl">
+		<property name="sessionFactory" ref="spring.hibernate.session.factory" />
+	</bean>
+	
+	<bean id="reserva.dao" class="ar.com.softtek.academia.backend.dao.impl.ReservaDAOImpl">
+		<property name="sessionFactory" ref="spring.hibernate.session.factory" />
+	</bean>
+	
+	<bean id="practica.dao" class="ar.com.softtek.academia.backend.dao.impl.PracticaDAOImpl">
+		<property name="sessionFactory" ref="spring.hibernate.session.factory" />
+	</bean>
+	
+	<bean id="plan.dao" class="ar.com.softtek.academia.backend.dao.impl.PlanDAOImpl">
 		<property name="sessionFactory" ref="spring.hibernate.session.factory" />
 	</bean>
 	

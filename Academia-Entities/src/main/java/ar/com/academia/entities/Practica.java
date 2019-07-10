@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Set;
 
 public class Practica {
-     int id;
-     float codigo;
-     String descripcion;
-     List<Turno> turnos;
-     Set<Prestador> prestadores;
+     private int id;
+     private float codigo;
+     private String descripcion;
+     private List<Turno> turnos;
+     private Set<Prestador> prestadores;
      
 	public Set<Prestador> getPrestadores() {
 		return prestadores;

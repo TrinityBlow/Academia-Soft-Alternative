@@ -12,7 +12,7 @@
 		<property name="codigo" column="CODIGO_PRACTICA" />
 		<property name="descripcion" column="DESCRIPCION" />
 		
-		<list name="turnos" cascade="all">
+		<list name="turnos" cascade="all" lazy="true">
 		   <key>
 		        <column name="ID_PRACTICA"></column>
 		   </key>

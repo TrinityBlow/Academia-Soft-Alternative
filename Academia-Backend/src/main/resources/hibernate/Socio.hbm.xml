@@ -22,7 +22,7 @@
 		<property name="email" column="EMAIL" />
 		<property name="password" column="PASSWORD" />
 		
-		<list name="turnos" cascade="all">
+		<list name="turnos" cascade="all" lazy="false">
 		   <key>
 		        <column name="ID_SOCIO"></column>
 		   </key>
@@ -33,7 +33,7 @@
 		</list>
 		
 		
- 		<many-to-one name="plan">  
+ 		<many-to-one name="plan" lazy="false">  
 		   <column name="ID_PLAN"></column>
 		</many-to-one>
 		

@@ -26,7 +26,7 @@ public class TurnoDAOImpl extends GenericDAOImpl<Turno> implements TurnoDAO {
 		Iterator<Turno> it = turnos.iterator();
 		while(it.hasNext()){
 			turno = it.next();
-			turnoDTOAgregar = TurnoMapper.turnoToDTO(turno);
+			turnoDTOAgregar = TurnoMapper.mapTurnoToDTO(turno);
 			turnoDTO.add(turnoDTOAgregar);
 		}
 		return turnoDTO;
@@ -48,7 +48,7 @@ public class TurnoDAOImpl extends GenericDAOImpl<Turno> implements TurnoDAO {
 		try{
 			TurnoDTO turnoDTO;
 			Turno turno = this.getById(id);
-			turnoDTO = TurnoMapper.turnoToDTO(turno);
+			turnoDTO = TurnoMapper.mapTurnoToDTO(turno);
 			return turnoDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -59,9 +59,9 @@ public class TurnoDAOImpl extends GenericDAOImpl<Turno> implements TurnoDAO {
 	public TurnoDTO saveTurno(TurnoDTO entidad) throws PersistenceException {
 		try{
 			TurnoDTO turnoDTOAgregado;
-			Turno turnoAgregar = TurnoMapper.DTOToTurno(entidad);
+			Turno turnoAgregar = TurnoMapper.mapDTOToTurno(entidad);
 			this.save(turnoAgregar);
-			turnoDTOAgregado = TurnoMapper.turnoToDTO(turnoAgregar);
+			turnoDTOAgregado = TurnoMapper.mapTurnoToDTO(turnoAgregar);
 			return turnoDTOAgregado;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -71,7 +71,7 @@ public class TurnoDAOImpl extends GenericDAOImpl<Turno> implements TurnoDAO {
 	@Override
 	public void updateTurno(TurnoDTO entidad) throws PersistenceException {
 		try{
-			Turno turnoModificar = TurnoMapper.DTOToTurno(entidad);
+			Turno turnoModificar = TurnoMapper.mapDTOToTurno(entidad);
 			this.update(turnoModificar);
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -82,7 +82,7 @@ public class TurnoDAOImpl extends GenericDAOImpl<Turno> implements TurnoDAO {
 	@Override
 	public boolean deleteTurno(TurnoDTO entidad) throws PersistenceException {
 		try{
-			Turno turnoBorrar = TurnoMapper.DTOToTurno(entidad);
+			Turno turnoBorrar = TurnoMapper.mapDTOToTurno(entidad);
 			boolean result = this.delete(turnoBorrar);
 			return result;
 		} catch (PersistenceException e){

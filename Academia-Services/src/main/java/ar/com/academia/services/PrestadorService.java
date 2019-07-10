@@ -9,7 +9,6 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import ar.com.academia.dto.PrestadorDTO;
-import ar.com.academia.dto.SocioDTO;
 import ar.com.academia.entities.exception.ServiceException;
 
 @WebService(name = "Prestadores")

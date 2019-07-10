@@ -25,7 +25,7 @@ public class PrestadorDAOImpl extends GenericDAOImpl<Prestador> implements Prest
 		Iterator<Prestador> it = prestadores.iterator();
 		while(it.hasNext()){
 			prestador = it.next();
-			prestadorDTOAgregar = PrestadorMapper.prestadorToDTO(prestador);
+			prestadorDTOAgregar = PrestadorMapper.mapPrestadorToDTO(prestador);
 			prestadoresDTO.add(prestadorDTOAgregar);
 		}
 		return prestadoresDTO;
@@ -47,7 +47,7 @@ public class PrestadorDAOImpl extends GenericDAOImpl<Prestador> implements Prest
 		try{
 			PrestadorDTO prestadorDTO;
 			Prestador prestador = this.getById(id);
-			prestadorDTO = PrestadorMapper.prestadorToDTO(prestador);
+			prestadorDTO = PrestadorMapper.mapPrestadorToDTO(prestador);
 			return prestadorDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -58,9 +58,9 @@ public class PrestadorDAOImpl extends GenericDAOImpl<Prestador> implements Prest
 	public PrestadorDTO savePrestador(PrestadorDTO entidad) throws PersistenceException {
 		try{
 			PrestadorDTO prestadorDTOAgregado;
-			Prestador prestadorAgregar = PrestadorMapper.DTOToPrestador(entidad);
+			Prestador prestadorAgregar = PrestadorMapper.mapDTOToPrestador(entidad);
 			this.save(prestadorAgregar);
-			prestadorDTOAgregado = PrestadorMapper.prestadorToDTO(prestadorAgregar);
+			prestadorDTOAgregado = PrestadorMapper.mapPrestadorToDTO(prestadorAgregar);
 			return prestadorDTOAgregado;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -70,7 +70,7 @@ public class PrestadorDAOImpl extends GenericDAOImpl<Prestador> implements Prest
 	@Override
 	public void updatePrestador(PrestadorDTO entidad) throws PersistenceException {
 		try{
-			Prestador prestadorModificar = PrestadorMapper.DTOToPrestador(entidad);
+			Prestador prestadorModificar = PrestadorMapper.mapDTOToPrestador(entidad);
 			this.update(prestadorModificar);
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -81,7 +81,7 @@ public class PrestadorDAOImpl extends GenericDAOImpl<Prestador> implements Prest
 	@Override
 	public boolean deletePrestador(PrestadorDTO entidad) throws PersistenceException {
 		try{
-			Prestador prestadorBorrar = PrestadorMapper.DTOToPrestador(entidad);
+			Prestador prestadorBorrar = PrestadorMapper.mapDTOToPrestador(entidad);
 			boolean result = this.delete(prestadorBorrar);
 			return result;
 		} catch (PersistenceException e){

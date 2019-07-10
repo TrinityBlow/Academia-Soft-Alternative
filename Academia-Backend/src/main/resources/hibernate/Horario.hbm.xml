@@ -13,12 +13,12 @@
 		<property name="horaInicio" column="HORA_INICIO" />
 		<property name="horaFin" column="HORA_FIN" />
 		
-		<list name="reservas" cascade="all">
+		<list name="reservas" cascade="all" lazy="true">
 		   <key>
 		        <column name="ID_HORARIO"></column>
 		   </key>
 		   <list-index>
-		        <column name="ID_RESERVA"></column>
+		        <column name="ID_TURNO"></column>
 		   </list-index>
 		   <one-to-many class="ar.com.academia.entities.Reserva"></one-to-many>
 		</list>

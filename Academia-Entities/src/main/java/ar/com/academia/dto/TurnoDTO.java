@@ -1,43 +1,57 @@
 package ar.com.academia.dto;
 
-import java.util.Date;
-
 public class TurnoDTO {
 
 	private int id;
-	private String especialidad;
-	private Date fecha;
-	private String prestacion;
-
+	private float importeDelTurno;
+	private String observaciones;
+	private SocioDTO socioDTO;
+	private PrestadorDTO prestadorDTO;
+	private ReservaDTO reservaDTO;
+	private PracticaDTO practicaDTO;
+	
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-	public String getEspecialidad() {
-		return especialidad;
+	public float getImporteDelTurno() {
+		return importeDelTurno;
 	}
-
-	public void setEspecialidad(String especialidad) {
-		this.especialidad = especialidad;
+	public void setImporteDelTurno(float importeDelTurno) {
+		this.importeDelTurno = importeDelTurno;
 	}
-
-	public Date getFecha() {
-		return fecha;
+	public String getObservaciones() {
+		return observaciones;
 	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
 	}
-
-	public String getPrestacion() {
-		return prestacion;
+	public SocioDTO getSocioDTO() {
+		return socioDTO;
 	}
-
-	public void setPrestacion(String prestacion) {
-		this.prestacion = prestacion;
+	public void setSocioDTO(SocioDTO socioDTO) {
+		this.socioDTO = socioDTO;
 	}
+	public PrestadorDTO getPrestadorDTO() {
+		return prestadorDTO;
+	}
+	public void setPrestadorDTO(PrestadorDTO prestadorDTO) {
+		this.prestadorDTO = prestadorDTO;
+	}
+	public ReservaDTO getReservaDTO() {
+		return reservaDTO;
+	}
+	public void setReservaDTO(ReservaDTO reservaDTO) {
+		this.reservaDTO = reservaDTO;
+	}
+	public PracticaDTO getPracticaDTO() {
+		return practicaDTO;
+	}
+	public void setPracticaDTO(PracticaDTO practicaDTO) {
+		this.practicaDTO = practicaDTO;
+	}
+		
+	
 }

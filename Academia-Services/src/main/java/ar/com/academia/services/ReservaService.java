@@ -32,4 +32,20 @@ public interface ReservaService {
 	public int countReservas() throws ServiceException;
 	
 
+	@WebMethod(operationName = "RemoveByIdReserva")
+	@WebResult(name = "RemoveByIdReservaResult")
+	public boolean removeByIdReserva(
+		@WebParam(name = "idReserva")
+		int idReserva
+			) throws ServiceException;
+	
+
+	@WebMethod(operationName = "AddReserva")
+	@WebResult(name = "AddReservaResult")
+	public int addReserva(
+		@WebParam(name = "reservaAgregar")
+		ReservaDTO agregar
+			) throws ServiceException;
+	
+
 }

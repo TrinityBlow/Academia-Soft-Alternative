@@ -52,7 +52,7 @@ public class SocioBOImpl implements SocioBO {
 
 	public boolean borrarSocio(int id) throws BusinessException {
 		try{
-			Boolean result = socioDAO.delete(id);
+			Boolean result = socioDAO.deleteSocio(id);
 			return result;
 		} catch (PersistenceException  e){
 			throw new BusinessException();

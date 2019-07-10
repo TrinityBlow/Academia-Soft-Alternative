@@ -22,7 +22,7 @@ public class ReservaDAOImpl extends GenericDAOImpl<Reserva> implements ReservaDA
 		try{
 			List<ReservaDTO> reservasDTO;
 			List<Reserva> reservas = this.getAll();
-			reservasDTO = ReservaMapper.createReservasListDTO(reservas); 
+			reservasDTO = ReservaMapper.mapListReservaToDTO(reservas); 
 			return reservasDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -34,7 +34,7 @@ public class ReservaDAOImpl extends GenericDAOImpl<Reserva> implements ReservaDA
 		try{
 			ReservaDTO reservaDTO;
 			Reserva reserva = this.getById(id);
-			reservaDTO = ReservaMapper.reservaToDTO(reserva);
+			reservaDTO = ReservaMapper.mapReservaToDTO(reserva);
 			return reservaDTO;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -46,6 +46,29 @@ public class ReservaDAOImpl extends GenericDAOImpl<Reserva> implements ReservaDA
 	public int countReservas() throws PersistenceException {
 		try{
 			int result = this.count();
+			return result;
+		} catch (PersistenceException e){
+			throw new PersistenceException();
+		} 
+	}
+
+	@Override
+	public ReservaDTO saveReserva(ReservaDTO reservaDTO) throws PersistenceException {
+		try{
+			ReservaDTO reservaDTOAgregado;
+			Reserva reservaAgregar = ReservaMapper.mapDTOToReserva(reservaDTO);
+			this.save(reservaAgregar);
+			reservaDTOAgregado = ReservaMapper.mapReservaToDTO(reservaAgregar);
+			return reservaDTOAgregado;
+		} catch (PersistenceException e){
+			throw new PersistenceException();
+		} 
+	}
+
+	@Override
+	public boolean deleteReserva(int id) throws PersistenceException {
+		try{
+			boolean result = this.delete(id);
 			return result;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
