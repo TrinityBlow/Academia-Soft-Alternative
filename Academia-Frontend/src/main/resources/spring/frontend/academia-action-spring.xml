@@ -13,14 +13,23 @@
 
 	<bean id="socio.action" class="ar.com.softtek.academia.web.action.SocioAction">
 		<property name="socioService" ref="socio.service" />
+		<property name="planService" ref="plan.service" />
 	</bean>
 	
 	<bean id="turno.action" class="ar.com.softtek.academia.web.action.TurnoAction">
 		<property name="turnoService" ref="turno.service" />
+		<property name="practicaService" ref="practica.service" />
+		<property name="prestadorService" ref="prestador.service" />
 	</bean>
 	
 	<bean id="prestador.action" class="ar.com.softtek.academia.web.action.PrestadorAction">
 		<property name="prestadorService" ref="prestador.service" />
+		<property name="horarioService" ref="horario.service" />
+		<property name="practicaService" ref="practica.service" />
+	</bean>
+	
+	<bean id="prestadores.action.json" class="ar.com.softtek.academia.web.action.json.PrestadorActionJSON">
+		<property name="practicaService" ref="practica.service" />
 	</bean>
 
 </beans>

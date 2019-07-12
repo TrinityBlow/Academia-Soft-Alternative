@@ -3,15 +3,15 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="ar.com.academia.entities.Plan" table="PLAN">
-		<id name="id" column="ID_PLAN" unsaved-value="0" type="int">
+	<class name="ar.com.academia.entities.Plan" table="PLANS">
+		<id name="id" column="ID_PLANS" unsaved-value="0" type="int">
 			<generator class="native"></generator>
 		</id>
 		<property name="descripcion" column="DESCRIPCION" />
 		
-		<list name="socios" cascade="all" lazy="false"> 
+		<list name="socios" cascade="all" lazy="true"> 
 		   <key>
-		        <column name="ID_PLAN"></column>
+		        <column name="ID_PLANS"></column>
 		   </key>
 		   <list-index>
 		        <column name="ID_SOCIO"></column>

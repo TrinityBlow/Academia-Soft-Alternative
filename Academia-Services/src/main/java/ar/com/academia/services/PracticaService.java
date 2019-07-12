@@ -9,10 +9,11 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import ar.com.academia.dto.PracticaDTO;
+import ar.com.academia.dto.PrestadorDTO;
 import ar.com.academia.entities.exception.ServiceException;
 
 @WebService(name = "Practicas")
-@XmlSeeAlso({PracticaDTO.class})
+@XmlSeeAlso({PracticaDTO.class, PrestadorDTO.class})
 public interface PracticaService {
 	
 
@@ -30,6 +31,14 @@ public interface PracticaService {
 	@WebMethod(operationName = "CountAllPracticas")
 	@WebResult(name = "CountAllPracticasResult")
 	public int countPracticas() throws ServiceException;
+	
+
+	@WebMethod(operationName = "GetPrestadoresOfPractica")
+	@WebResult(name = "GetPrestadoresOfPracticaResult")
+	public List<PrestadorDTO> getPrestadoresOfPractica(
+			@WebParam(name = "idPractica")
+			int id
+			) throws ServiceException;
 	
 
 }

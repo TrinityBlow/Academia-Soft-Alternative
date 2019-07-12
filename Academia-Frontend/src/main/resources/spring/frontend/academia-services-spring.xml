@@ -26,11 +26,29 @@
 		address="http://localhost:8080/Academia-Backend/webservices/PrestadorService"
 		id="prestador.service"
 	/> 
+		 
+	<jaxws:client 
+		serviceClass="ar.com.academia.services.PracticaService"
+		address="http://localhost:8080/Academia-Backend/webservices/PracticaService"
+		id="practica.service"
+	/> 
 	
 	<jaxws:client 
 		serviceClass="ar.com.academia.services.TurnoService"
 		address="http://localhost:8080/Academia-Backend/webservices/TurnoService"
 		id="turno.service"
 	/>
+	
+	<jaxws:client 
+		serviceClass="ar.com.academia.services.PlanService"
+		address="http://localhost:8080/Academia-Backend/webservices/PlanService"
+		id="plan.service"
+	/>
 
+	<jaxws:client 
+		serviceClass="ar.com.academia.services.HorarioService"
+		address="http://localhost:8080/Academia-Backend/webservices/HorarioService"
+		id="horario.service"
+	/>
+	
 </beans>

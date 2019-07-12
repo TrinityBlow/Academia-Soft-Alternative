@@ -109,20 +109,26 @@
     
 <!-- 		https://mvnrepository.com/artifact/org.apache.struts/struts2-dojo-plugin -->
 <!-- 		Se usan los tag de autocompletado el cual tiene implementado ajax -->
-<!-- 		<dependency> -->
-<!-- 		    <groupId>org.apache.struts</groupId> -->
-<!-- 		    <artifactId>struts2-dojo-plugin</artifactId> -->
-<!-- 		    <version>${struts.version}</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-dojo-plugin</artifactId>
+		    <version>${struts.version}</version>
+		</dependency>
     
 				
-		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
-	<dependency>
-	    <groupId>javax.servlet</groupId>
-	    <artifactId>javax.servlet-api</artifactId>
-	    <version>3.1.0</version>
-	    <scope>provided</scope>
-	</dependency>
+			<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+			
+					<dependency>
+       		<groupId>org.apache.struts</groupId>
+	  		<artifactId>struts2-json-plugin</artifactId>
+	   		<version>${struts.version}</version>
+   		</dependency>
 			
 	</dependencies>
 	

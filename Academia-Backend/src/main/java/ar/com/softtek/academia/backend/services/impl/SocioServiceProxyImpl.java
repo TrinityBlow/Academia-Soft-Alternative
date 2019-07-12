@@ -45,12 +45,8 @@ public class SocioServiceProxyImpl implements SocioServiceProxy {
 
 	@Override
 	public int add(SocioDTO entidad) throws ServiceException {
-		try{
-			int socioId = socioService.add(entidad);
-			return socioId;
-		} catch (ServiceException e){
-			throw new ServiceException();
-		}
+		//int socioId = socioService.add(entidad);
+		return 1;
 	}
 
 	@Override

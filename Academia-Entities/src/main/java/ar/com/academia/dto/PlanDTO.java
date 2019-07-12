@@ -9,6 +9,12 @@ public class PlanDTO {
 	private String descripcion;
 	private List<SocioDTO> sociosDTO;
 	
+	
+	public String toString(){
+		return "Codigo: " + id.toString() + "   Descripcion: " + descripcion;
+		
+	}
+	
 	public Integer getId() {
 		return id;
 	}

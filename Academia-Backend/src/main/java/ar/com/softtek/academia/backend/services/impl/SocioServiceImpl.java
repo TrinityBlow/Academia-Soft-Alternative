@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jws.WebService;
 
 import ar.com.academia.dto.SocioDTO;
+import ar.com.academia.dto.service.SocioServiceDTO;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.ServiceException;
 import ar.com.academia.services.SocioService;
@@ -23,7 +24,7 @@ public class SocioServiceImpl implements SocioService {
 		this.socioBO = socioBO;
 	}
 
-	public int add(SocioDTO agregar) throws ServiceException {
+	public int add(SocioServiceDTO agregar) throws ServiceException {
 		try{
 			SocioDTO socioDTOAgregado;
 			socioDTOAgregado = socioBO.crearSocio(agregar);

@@ -1,10 +1,15 @@
 package ar.com.softtek.academia.backend.bo.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import ar.com.academia.dto.PlanDTO;
 import ar.com.academia.dto.SocioDTO;
+import ar.com.academia.dto.TurnoDTO;
+import ar.com.academia.dto.service.SocioServiceDTO;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.PersistenceException;
+import ar.com.softtek.academia.backend.bo.PlanBO;
 import ar.com.softtek.academia.backend.bo.SocioBO;
 import ar.com.softtek.academia.backend.dao.SocioDAO;
 
@@ -12,6 +17,7 @@ import ar.com.softtek.academia.backend.dao.SocioDAO;
 public class SocioBOImpl implements SocioBO {
 
 	private SocioDAO socioDAO;
+	private PlanBO planBO;
 	
 
 	public SocioDTO getSocioById(int id) throws BusinessException {
@@ -31,10 +37,29 @@ public class SocioBOImpl implements SocioBO {
 		}
 	}
 
-	public SocioDTO crearSocio(SocioDTO entidad) throws BusinessException {
+	public SocioDTO crearSocio(SocioServiceDTO entidad) throws BusinessException {
 		try{
-			SocioDTO socioDTO = socioDAO.saveSocio(entidad);
-			return socioDTO;
+			PlanDTO buscarPlan = planBO.getPlanById(entidad.getPlanDTO());
+			SocioDTO socioDTO = new SocioDTO();
+			List<TurnoDTO> turnos= new ArrayList<TurnoDTO>();
+			
+			socioDTO.setApellido(entidad.getApellido());
+			socioDTO.setCantidadHijos(entidad.getCantidadHijos());
+			socioDTO.setDireccion(entidad.getDireccion());
+			socioDTO.setDni(entidad.getDni());
+			socioDTO.setEmail(entidad.getEmail());
+			socioDTO.setEstadoCivil(entidad.getEstadoCivil());
+			socioDTO.setNombre(entidad.getNombre());
+			socioDTO.setNombreConyuge(entidad.getNombreConyuge());
+			socioDTO.setNumeroSocio(entidad.getNumeroSocio());
+			socioDTO.setPlanDTO(buscarPlan);
+			socioDTO.setSexo(entidad.getSexo());
+			socioDTO.setTelefono(entidad.getTelefono());
+			socioDTO.setTurnosDTO(turnos);
+			
+			SocioDTO socioDTOCreado = socioDAO.saveSocio(socioDTO);
+			
+			return socioDTOCreado;
 		} catch (PersistenceException  e){
 			throw new BusinessException();
 		}
@@ -91,6 +116,14 @@ public class SocioBOImpl implements SocioBO {
 		} catch (PersistenceException  e){
 			throw new BusinessException();
 		}
+	}
+
+	public PlanBO getPlanBO() {
+		return planBO;
+	}
+
+	public void setPlanBO(PlanBO planBO) {
+		this.planBO = planBO;
 	}
 
 	

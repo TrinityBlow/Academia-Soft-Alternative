@@ -7,6 +7,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import ar.com.academia.dto.HorarioDTO;
+import ar.com.academia.dto.PracticaDTO;
 import ar.com.academia.dto.PrestadorDTO;
 import ar.com.academia.entities.Horario;
 import ar.com.academia.entities.Practica;
@@ -23,6 +25,13 @@ public class PrestadorMapper {
 			prestadorDTO.setApellido(prestadorToMap.getApellido());
 			prestadorDTO.setTelefono(prestadorToMap.getTelefono());
 			prestadorDTO.setEmail(prestadorToMap.getEmail());
+			
+			List<HorarioDTO> horariosDTO = HorarioMapper.mapListHorariosToDTO(prestadorToMap.getHoras());
+			prestadorDTO.setHorasDTO(horariosDTO);
+			
+			List<PracticaDTO> practicasDTO = PracticaMapper.mapListPracticaToDTO(prestadorToMap.getPracticas());
+			prestadorDTO.setPracticasDTO(practicasDTO);
+			
 		}
 		
 		return prestadorDTO;

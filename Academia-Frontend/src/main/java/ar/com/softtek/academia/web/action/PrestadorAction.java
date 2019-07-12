@@ -1,9 +1,14 @@
 package ar.com.softtek.academia.web.action;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import ar.com.academia.dto.HorarioDTO;
+import ar.com.academia.dto.PracticaDTO;
 import ar.com.academia.dto.PrestadorDTO;
 import ar.com.academia.entities.exception.ServiceException;
+import ar.com.academia.services.HorarioService;
+import ar.com.academia.services.PracticaService;
 import ar.com.academia.services.PrestadorService;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -13,11 +18,30 @@ import com.opensymphony.xwork2.ActionSupport;
 public class PrestadorAction extends ActionSupport {
 
 	private PrestadorService prestadorService;
+	private PracticaService practicaService;
+	private HorarioService horarioService;
+
 	private PrestadorDTO prestadorDTO;
+	
 	private String idPrestador;
 	private List<PrestadorDTO> listaPrestadoresDTO;
+	private List<PracticaDTO> listaPracticasDTO;
+	private List<PracticaDTO> practicas;
+	private List<PracticaDTO> practicasElegidos;
+	private List<HorarioDTO> horarios;
+	private List<HorarioDTO> horariosElegidos;
 	
+	private PrestadorDTO prestadorSelect;
 	
+	public PrestadorDTO getPrestadorSelect() {
+		return prestadorSelect;
+	}
+
+	public void setPrestadorSelect(PrestadorDTO prestadorSelect) {
+		this.prestadorSelect = prestadorSelect;
+	}
+
+
 	public PrestadorService getPrestadorService() {
 		return prestadorService;
 	}
@@ -61,7 +85,30 @@ public class PrestadorAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}
+	
+	
+	public List<PracticaDTO> getPracticas() {
+		return practicas;
+	}
 
+	public void setPracticas(List<PracticaDTO> practicas) {
+		this.practicas = practicas;
+	}
+
+	public String nuevoPrestador(){
+		
+	
+		try {
+			this.setPracticas(practicaService.getAllPracticas());
+	
+			this.setHorarios(horarioService.getAllHorarios());
+			
+		} catch (ServiceException e) {
+			return ERROR;
+		}
+
+		return SUCCESS;
+	}
 	
 	public String deletePrestador(){
 		try{
@@ -102,6 +149,55 @@ public class PrestadorAction extends ActionSupport {
 			return ERROR;
 		}
 		return SUCCESS;
+	}
+
+	public List<PracticaDTO> getListaPracticasDTO() {
+		return listaPracticasDTO;
+	}
+
+	public void setListaPracticasDTO(List<PracticaDTO> listaPracticasDTO) {
+		this.listaPracticasDTO = listaPracticasDTO;
+	}
+
+
+	public HorarioService getHorarioService() {
+		return horarioService;
+	}
+
+	public void setHorarioService(HorarioService horarioService) {
+		this.horarioService = horarioService;
+	}
+
+	public List<HorarioDTO> getHorarios() {
+		return horarios;
+	}
+
+	public void setHorarios(List<HorarioDTO> horarios) {
+		this.horarios = horarios;
+	}
+
+	public List<HorarioDTO> getHorariosElegidos() {
+		return horariosElegidos;
+	}
+
+	public void setHorariosElegidos(List<HorarioDTO> horariosElegidos) {
+		this.horariosElegidos = horariosElegidos;
+	}
+
+	public PracticaService getPracticaService() {
+		return practicaService;
+	}
+
+	public void setPracticaService(PracticaService practicaService) {
+		this.practicaService = practicaService;
+	}
+
+	public List<PracticaDTO> getPracticasElegidos() {
+		return practicasElegidos;
+	}
+
+	public void setPracticasElegidos(List<PracticaDTO> practicasElegidos) {
+		this.practicasElegidos = practicasElegidos;
 	}
 	
 }

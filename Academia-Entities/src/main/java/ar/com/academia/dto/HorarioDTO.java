@@ -46,6 +46,8 @@ public class HorarioDTO {
 	public void setPrestadoresDTO(List<PrestadorDTO> prestadoresDTO) {
 		this.prestadoresDTO = prestadoresDTO;
 	}
-    
+    public String toString(){
+    	return this.getHoraInicio() + " a " + this.getHoraFin();
+    }
     
 }

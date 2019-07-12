@@ -1,13 +1,7 @@
-package ar.com.academia.dto;
+package ar.com.academia.dto.service;
 
-import java.util.List;
-
-
-
-public class SocioDTO {
-
-	private static final long serialVersionUID = 1L;
-	private int id;
+public class SocioServiceDTO {
+	
 	private int numeroSocio;
 	private String nombre;
 	private String apellido;
@@ -19,16 +13,10 @@ public class SocioDTO {
 	private String telefono;
 	private String direccion;
 	private String email;
-	private List<TurnoDTO> turnosDTO;
-	private PlanDTO planDTO;
+	private Integer planDTO;
+	private String password;
 	
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public int getNumeroSocio() {
 		return numeroSocio;
 	}
@@ -95,23 +83,16 @@ public class SocioDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<TurnoDTO> getTurnosDTO() {
-		return turnosDTO;
-	}
-	public void setTurnosDTO(List<TurnoDTO> turnosDTO) {
-		this.turnosDTO = turnosDTO;
-	}
-	public PlanDTO getPlanDTO() {
+	public Integer getPlanDTO() {
 		return planDTO;
 	}
-	public void setPlanDTO(PlanDTO planDTO) {
+	public void setPlanDTO(Integer planDTO) {
 		this.planDTO = planDTO;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getPassword() {
+		return password;
 	}
-	
-	
-	
-	
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

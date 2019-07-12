@@ -1,5 +1,6 @@
 package ar.com.softtek.academia.backend.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jws.WebService;
@@ -24,10 +25,10 @@ public class PlanServiceImpl implements PlanService {
 	}
 
 
-	public List<PlanDTO> getAllPlanes() throws ServiceException {
+	public ArrayList<PlanDTO> getAllPlanes() throws ServiceException {
 		try{
 			List<PlanDTO> plan = planBO.getAllPlanes();
-			return plan;
+			return (ArrayList<PlanDTO>) plan;
 		} catch (BusinessException c){
 			throw new ServiceException();
 		}

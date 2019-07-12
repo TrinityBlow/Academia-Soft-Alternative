@@ -9,10 +9,11 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import ar.com.academia.dto.SocioDTO;
+import ar.com.academia.dto.service.SocioServiceDTO;
 import ar.com.academia.entities.exception.ServiceException;
 
 @WebService(name = "Socios")
-@XmlSeeAlso({SocioDTO.class})
+@XmlSeeAlso({SocioServiceDTO.class, SocioDTO.class})
 public interface SocioService {
 
 	
@@ -20,7 +21,7 @@ public interface SocioService {
 	@WebResult(name = "AddSocioResult")
 	public int add(
 		@WebParam(name = "socioAgregar")
-		SocioDTO agregar
+		SocioServiceDTO agregar
 			) throws ServiceException;
 
 

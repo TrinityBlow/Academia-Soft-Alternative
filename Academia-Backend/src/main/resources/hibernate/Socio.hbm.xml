@@ -34,7 +34,7 @@
 		
 		
  		<many-to-one name="plan" lazy="false">  
-		   <column name="ID_PLAN"></column>
+		   <column name="ID_PLANS"></column>
 		</many-to-one>
 		
 	</class>

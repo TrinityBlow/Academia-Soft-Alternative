@@ -53,5 +53,4 @@ public class TurnoDTO {
 		this.practicaDTO = practicaDTO;
 	}
 		
-	
 }

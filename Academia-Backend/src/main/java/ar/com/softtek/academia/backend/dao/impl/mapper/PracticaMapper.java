@@ -18,7 +18,9 @@ public class PracticaMapper {
 			practicaDTO = new PracticaDTO();
 			practicaDTO.setId(practicaToMap.getId());
 			practicaDTO.setCodigo(practicaToMap.getCodigo());
-			practicaDTO.setDescripcion(practicaToMap.getDescripcion());			
+			practicaDTO.setDescripcion(practicaToMap.getDescripcion());
+			
+			
 		}
 		
 		return practicaDTO;

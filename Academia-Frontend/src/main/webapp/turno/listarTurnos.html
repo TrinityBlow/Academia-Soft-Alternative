@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="es" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Servicio Medico Java</title>
+	
+	<link rel="stylesheet" href="listarTurnos.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="contenedor">
+      <header>
+			<form action="buscar.html">
+				<input id="buscar" type="search" value="Search">
+			</form>
+      </header>
+
+        <section class="boxMain">
+		<div class="Turnos">
+				<div class="tituloTurnos"> Turnos </div>
+				<div class="Turno">
+					<div class="tablaTurno">
+						<table id="Turno1">
+							<tr class="titulosTurno">
+								<td>Nro. Turno</td>
+								<td>Nombre y Apellido</td>
+								<td>Nro. Afiliado</td>
+								<td>Plan Medico</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>1234</td>
+								<td>Carlos Perez</td>
+								<td>456782</td>
+								<td>LMV12</td>
+							</tr>
+						</table>
+					</div>
+					
+				</div>
+				<div class="mostrarMas">
+					<div class="Turno">
+						<div class="tablaTurno">
+							<table id="Turno2">
+								<tr class="titulosTurno">
+									<td>Nro. Turno</td>
+									<td>Nombre y Apellido</td>
+									<td>Nro. Afiliado</td>
+									<td>Plan Medico</td>
+								</tr>
+								<tr>
+									<td>1234</td>
+									<td>Carlos Perez</td>
+									<td>456782</td>
+									<td>LMV12</td>
+								</tr>
+							</table>
+						</div>
+						<div class="accionesTurno">
+							<div ><img class="accion" src="mas.png"> </img></div>
+							<div ><img class="accion" src="menos.png"></img></div>
+							<div ><img class="accion" src="modificar.png"></img></div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </section>
+		<div class="paginas" align="center">
+			<table>
+				<td><a href="ListaTurnos.html">Pagina1</a></td>
+				<td><a href="ListaTurnos.html">Pagina2</a></td>
+				<td><a href="ListaTurnos.html">Pagina3</a></td>
+			</table>
+		</div>
+	</div>
+  </body>
+</html>

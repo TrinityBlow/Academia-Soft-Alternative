@@ -2,6 +2,7 @@ package ar.com.softtek.academia.backend.dao;
 
 import java.util.List;
 
+import ar.com.academia.entities.Prestador;
 import ar.com.academia.entities.exception.PersistenceException;
 
 public interface GenericDAO<T> {
@@ -19,6 +20,7 @@ public interface GenericDAO<T> {
 	boolean delete(int id) throws PersistenceException;
 	
 	public int count() throws PersistenceException;
+
 
 }
 

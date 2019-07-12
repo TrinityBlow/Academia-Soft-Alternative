@@ -3,6 +3,7 @@ package ar.com.softtek.academia.backend.bo.impl;
 import java.util.List;
 
 import ar.com.academia.dto.PracticaDTO;
+import ar.com.academia.dto.PrestadorDTO;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.PersistenceException;
 import ar.com.softtek.academia.backend.bo.PracticaBO;
@@ -40,6 +41,18 @@ public class PracticaBOImpl implements PracticaBO{
 		try{
 			int cantPracticas = practicaDAO.countPracticas();
 			return	cantPracticas;
+		} catch (PersistenceException  e){
+			throw new BusinessException();
+		}
+	}
+
+	//usa hql
+	@Override
+	public List<PrestadorDTO> getAllPrestadoresByPractica(int id) throws BusinessException{
+		try{
+			List<PrestadorDTO> listAllPrestadoresByPractica = practicaDAO.getPrestadores(id);
+			
+			return	listAllPrestadoresByPractica;
 		} catch (PersistenceException  e){
 			throw new BusinessException();
 		}

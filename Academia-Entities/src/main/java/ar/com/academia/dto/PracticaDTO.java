@@ -41,7 +41,9 @@ public class PracticaDTO {
 	public void setPrestadoresDTO(List<PrestadorDTO> prestadoresDTO) {
 		this.prestadoresDTO = prestadoresDTO;
 	}
-    
+	 public String toString(){
+	    	return this.getDescripcion();
+	 }
     
     
 

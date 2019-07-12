@@ -2,9 +2,12 @@ package ar.com.softtek.academia.backend.services.impl;
 
 import java.util.List;
 
+import javax.jws.WebMethod;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 
 import ar.com.academia.dto.PracticaDTO;
+import ar.com.academia.dto.PrestadorDTO;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.ServiceException;
 import ar.com.academia.services.PracticaService;
@@ -51,4 +54,15 @@ public class PracticaServiceImpl implements PracticaService {
 			throw new ServiceException();
 		}
 	}
+
+	@Override
+	public List<PrestadorDTO> getPrestadoresOfPractica(int id) throws ServiceException{
+		try{
+			List<PrestadorDTO> listAllPrestadoresByPractica = practicaBO.getAllPrestadoresByPractica(id);
+			return listAllPrestadoresByPractica;
+		} catch (BusinessException c){
+			throw new ServiceException();
+		}
+	}
+
 }

@@ -55,7 +55,7 @@
 				<!-- create borra toda la bd y la vuelve a crear -->
 				<!-- update actualiza el esquema con los hbm -->
 				<!-- validate no modifica la bd pero falla si hay cambios en los hbm -->
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.connection.release_mode">on_close</prop>

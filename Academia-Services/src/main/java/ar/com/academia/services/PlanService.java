@@ -1,5 +1,6 @@
 package ar.com.academia.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jws.WebMethod;
@@ -18,7 +19,7 @@ public interface PlanService {
 
 	@WebMethod(operationName = "GetAllPlanes")
 	@WebResult(name = "GetAllPlanesResult")
-	public List<PlanDTO> getAllPlanes() throws ServiceException;
+	public ArrayList<PlanDTO> getAllPlanes() throws ServiceException;
 
 	@WebMethod(operationName = "GetByIdPlan")
 	@WebResult(name = "GetByIdPlanResult")

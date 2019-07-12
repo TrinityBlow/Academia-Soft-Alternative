@@ -7,6 +7,7 @@ import java.util.List;
 
 import ar.com.academia.dto.SocioDTO;
 import ar.com.academia.dto.TurnoDTO;
+import ar.com.academia.dto.service.SocioServiceDTO;
 import ar.com.academia.entities.Socio;
 import ar.com.academia.entities.Turno;
 
@@ -54,10 +55,34 @@ public class SocioMapper {
 			socioEntity.setTelefono(socioToMap.getTelefono());
 			socioEntity.setDireccion(socioToMap.getDireccion());
 			socioEntity.setEmail(socioToMap.getEmail());
-			socioEntity.setPassword(socioToMap.getPassword());
 			
 			
 			socioEntity.setPlan(PlanMapper.mapDTOToPlan(socioToMap.getPlanDTO()));
+	
+	//		List<Turno> turnosDTO = TurnoMapper.mapListDTOToTurno(socioToMap.getTurnosDTO());
+	//		socioEntity.setTurnos(turnosDTO);
+		}
+		
+		return socioEntity;
+	}
+	
+	public static Socio mapDTOToSocio(SocioServiceDTO socioToMap){
+		Socio socioEntity = null;
+		if(socioToMap != null) {
+			socioEntity = new Socio();
+			socioEntity.setNumeroSocio(socioToMap.getNumeroSocio());
+	    	socioEntity.setNombre(socioToMap.getNombre());
+	    	socioEntity.setApellido(socioToMap.getNombre());
+			socioEntity.setSexo(socioToMap.getSexo());
+			socioEntity.setEstadoCivil(socioToMap.getEstadoCivil());
+			socioEntity.setNombreConyuge(socioToMap.getNombreConyuge());
+			socioEntity.setCantidadHijos(socioToMap.getCantidadHijos());
+			socioEntity.setDni(socioToMap.getDni());
+			socioEntity.setTelefono(socioToMap.getTelefono());
+			socioEntity.setDireccion(socioToMap.getDireccion());
+			socioEntity.setEmail(socioToMap.getEmail());
+			socioEntity.setPassword(socioToMap.getPassword());
+			
 	
 	//		List<Turno> turnosDTO = TurnoMapper.mapListDTOToTurno(socioToMap.getTurnosDTO());
 	//		socioEntity.setTurnos(turnosDTO);
