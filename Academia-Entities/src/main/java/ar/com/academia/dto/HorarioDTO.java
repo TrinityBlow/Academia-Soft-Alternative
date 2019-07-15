@@ -50,4 +50,8 @@ public class HorarioDTO {
     	return this.getHoraInicio() + " a " + this.getHoraFin();
     }
     
+    public String getFormarHora(){
+    	return toString();
+    }
+    
 }

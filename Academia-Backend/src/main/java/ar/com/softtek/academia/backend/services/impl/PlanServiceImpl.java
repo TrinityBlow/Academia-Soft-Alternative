@@ -25,10 +25,10 @@ public class PlanServiceImpl implements PlanService {
 	}
 
 
-	public ArrayList<PlanDTO> getAllPlanes() throws ServiceException {
+	public List<PlanDTO> getAllPlanes() throws ServiceException {
 		try{
 			List<PlanDTO> plan = planBO.getAllPlanes();
-			return (ArrayList<PlanDTO>) plan;
+			return plan;
 		} catch (BusinessException c){
 			throw new ServiceException();
 		}

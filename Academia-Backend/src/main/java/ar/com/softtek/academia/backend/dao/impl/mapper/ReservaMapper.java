@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import ar.com.academia.dto.HorarioDTO;
 import ar.com.academia.dto.ReservaDTO;
 import ar.com.academia.entities.Horario;
 import ar.com.academia.entities.Reserva;
@@ -13,12 +14,17 @@ import ar.com.academia.entities.Turno;
 
 public class ReservaMapper {
 
+	
 	public static ReservaDTO mapReservaToDTO(Reserva reservaToMap){
 		ReservaDTO reservaDTO = null;		
 		if(reservaToMap != null) {
 			reservaDTO = new ReservaDTO();	
 			reservaDTO.setId(reservaToMap.getId());
 			reservaDTO.setFecha(reservaToMap.getFecha());	
+			
+			HorarioDTO horarioDTO = HorarioMapper.mapHorarioToDTO(reservaToMap.getHorario());
+			reservaDTO.setHorarioDTO(horarioDTO);
+			
 		}
 		
 		return reservaDTO;

@@ -12,20 +12,20 @@
 		<property name="importeDelTurno" column="IMPORTE_DEL_TURNO" />
 		<property name="observaciones" column="OBSERVACIONES"></property>		
 		
-	 	<many-to-one name="socio">
+	 	<many-to-one name="socio" lazy="false">
 		   <column name="ID_SOCIO"></column>
 		</many-to-one>
 		
-		<many-to-one name="prestador"> 
+		<many-to-one name="prestador" lazy="false"> 
 		   <column name="ID_PRESTADOR"></column> 
 		</many-to-one>
 		
-		<many-to-one name="practica"> 
+		<many-to-one name="practica" lazy="false"> 
 		   <column name="ID_PRACTICA"></column> 
 		</many-to-one>
 		
 		<one-to-one name="reserva" class="ar.com.academia.entities.Reserva"
-			cascade="save-update"></one-to-one>
+			cascade="save-update" lazy="false"></one-to-one>
 			
 	</class>
 	

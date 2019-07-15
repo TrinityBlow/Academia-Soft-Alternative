@@ -5,6 +5,7 @@ import java.util.List;
 import javax.jws.WebService;
 
 import ar.com.academia.dto.TurnoDTO;
+import ar.com.academia.dto.service.TurnoServiceDTO;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.ServiceException;
 import ar.com.academia.services.TurnoService;
@@ -23,7 +24,7 @@ public class TurnoServiceImpl implements TurnoService {
 		this.turnoBO = turnoBO;
 	}
 
-	public int addTurno(TurnoDTO agregar) throws ServiceException {
+	public int addTurno(TurnoServiceDTO agregar) throws ServiceException {
 		try{
 			TurnoDTO turnoDTOAgregado;
 			turnoDTOAgregado = turnoBO.crearTurno(agregar);

@@ -14,27 +14,28 @@
 </head>
 <body>
 	<h2 id="titulo"> Registracion de Socio </h2>
-	<s:form action="agregarSocio" method="post" >
+	<s:form id="target" action="agregarSocio" namespace="/" name="target" method="post">
 	    <s:textfield label="Nro socio" type="number" name="socioServiceDTO.numeroSocio" ></s:textfield>
 	    <s:textfield label="Nombre:" type="text" name="socioServiceDTO.nombre" ></s:textfield>
 	    <s:textfield label="Apellidos:" type="text" name="socioServiceDTO.apellido" ></s:textfield>
 	    <s:radio label="Sexo" name="socioServiceDTO.sexo" list="#{ 'Masculino': 'masculino', 'Femenino': 'femenino'}"></s:radio>
 	    <s:select label="Estado Civil:" name="socioServiceDTO.estadoCivil" list="#{ 'Soltero': 'soltero', 'Casado': 'casado'}" onchange="formularioCambiar()"></s:select>
 	    <div id="casados" >
-		    <s:textfield label="Nombre y Apellido de Paraje:" type="text" name="socioServiceDTO.nombreConyuge" ></s:textfield>
+		    <s:textfield label="Nombre y Apellido de Pareja:" type="text" name="socioServiceDTO.nombreConyuge" ></s:textfield>
 		    <s:textfield label="Cantidad Hijos:" type="number" name="socioServiceDTO.cantidadHijos" ></s:textfield>
 	    </div>
 	    <s:textfield label="DNI:" type="number" name="socioServiceDTO.dni" ></s:textfield>
 	    <s:textfield label="Telefono:" type="number" name="socioServiceDTO.telefono" ></s:textfield>
 	    <s:textfield label="Direccion:" type="text" name="socioServiceDTO.direccion" ></s:textfield>
-<%-- 		<s:select  label="Planes:" headerKey="-1" headerValue="Select Plan" list="listaPlanesDTO" name="planDTO" ></s:select> --%>
 
-<%-- 		<s:select label="Planes"  --%>
-<%-- 			list="listaPlanesDTO"  --%>
-<%-- 			name="planDTO"  --%>
-<%-- 			/> --%>
-			
-	    <br><br>
+	    <s:password label="Clave:" type="password" name="socioServiceDTO.password" ></s:password>
+	    <s:textfield label="Email" type="text" name="socioServiceDTO.email"></s:textfield>
+		<s:select label="Planes:" headerKey="-1" headerValue="Select Plan" 
+			list="listaPlanesDTO" listKey="id" listValue="descripcion" listKey="id"
+        	name="socioServiceDTO.planDTO" 
+        	key="socioServiceDTO.planDTO"  key="planDTO">
+        </s:select>
+	  <br><br>
 	    <s:submit label="Registrar Socio"></s:submit>
 	</s:form> 
 	<a href="./listSocios"><button> Volver </button></a>

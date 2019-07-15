@@ -20,7 +20,6 @@ public class PracticaMapper {
 			practicaDTO.setCodigo(practicaToMap.getCodigo());
 			practicaDTO.setDescripcion(practicaToMap.getDescripcion());
 			
-			
 		}
 		
 		return practicaDTO;

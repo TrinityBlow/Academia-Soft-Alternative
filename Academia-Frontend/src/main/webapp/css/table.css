@@ -1,0 +1,142 @@
+@CHARSET "ISO-8859-1";
+*{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+.contenedor{
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+
+  /*Flex*/
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap; /*Pueden colocarse abajo*/
+  justify-content: center; /*Para que los elementos, principalmnete el main este en el centro*/
+}
+[type="search"]{
+  width: 100%;
+}
+header{
+	width:100%;
+	display: block;
+	order: 1;
+}
+
+#buscar{
+	width: 40%;
+	height: 32px;
+	margin-left: 25%;
+	border: 2px solid black;
+	background-color: white;
+    padding: 10px;
+	border-radius: 10px;
+	margin-top: 20px;
+	margin-bottom:1%;
+	display: flex;
+	flex-wrap: wrap;
+}
+[type="search"],[type="file"]{
+  max-width: 100%;
+}
+
+.boxMain{
+  /*background: #e9e9e9;
+  padding:20px;*/
+  order: 2;
+
+  /*Flex*/
+  flex: 1 1 80%;
+}
+
+body{
+	font-family: Arial;
+}
+
+.tituloPacientes,.tituloTurnos{
+	width: 100%;
+	font-size: 30px;
+	font-family: Arial;
+}
+
+.mostrarMas{
+	display: none;
+}
+
+td{
+	border: solid;
+	padding: 8px;
+	background-color:white;
+}
+
+table{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+tr > th{
+	background-color: gray;
+}
+
+
+.titulosPaciente,.titulosTurno{
+	background-color: gray;
+}
+
+.accionesTurno,.accionesPaciente{
+	display: block;
+	float: right;
+	width: 4%;
+}
+
+.accion{
+	float: right;
+	width: 40px;
+	height: 40px;
+	margin-left: 1%;
+}
+
+.tablaPaciente,.tablaTurno{
+	order: 3;
+	float: left;
+	width: 92%;
+	height: 100%;
+}
+
+.paciente,.Turno{
+	width: 100%;
+}
+.Pacientes,.Turnos{
+	order: 4;
+	width: 92%;
+	border: 2px solid black;
+	background-color: white;
+    padding: 15px;
+	margin-top: 1%;
+	vertical-align: bottom;
+	margin-left: 5%;
+	margin-right: 5%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paginas{
+	order: 5;
+	margin-bottom: 60px;
+	margin-left: 30%;
+	margin-right: 30%;
+  display: flex;
+  flex-wrap: wrap;
+}
+td.paginas{
+	padding: 10px;
+	border-radius:10px;
+	border: solid;
+}
+a:link,a:visited{
+	text-decoration: none;
+}

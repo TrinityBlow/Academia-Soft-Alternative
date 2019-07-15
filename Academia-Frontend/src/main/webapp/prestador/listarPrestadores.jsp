@@ -12,7 +12,7 @@
 
 	<h2>Lista de Prestadores</h2>
 	<br><br>
-	<a href="./nuevoPrestador.jsp"><button>
+	<a href="./nuevoPrestador"><button>
 	    Nuevo Prestador
 	</button></a>
 	<br><br>
@@ -21,7 +21,6 @@
 	
 <table>
   <tr style="background: #CCCCCC">
-    <th>Numero Prestador</th>
     <th>Nombre</th>
     <th>Apellido</th> 
     <th>Email</th>
@@ -31,7 +30,6 @@
   </tr>
 	<s:iterator value="listaPrestadoresDTO" status="prestador">
 	  <tr>
-		<td> <s:property value="numeroPrestador"/><br/>  </td> 
 		<td> <s:property value="nombre"/><br/>  </td> 
 		<td> <s:property value="apellido"/><br/>  </td> 
 		<td> <s:property value="email"/><br/>  </td> 

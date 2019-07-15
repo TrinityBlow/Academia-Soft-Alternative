@@ -19,7 +19,7 @@
 	<bean id="turno.action" class="ar.com.softtek.academia.web.action.TurnoAction">
 		<property name="turnoService" ref="turno.service" />
 		<property name="practicaService" ref="practica.service" />
-		<property name="prestadorService" ref="prestador.service" />
+		<property name="socioService" ref="socio.service" />
 	</bean>
 	
 	<bean id="prestador.action" class="ar.com.softtek.academia.web.action.PrestadorAction">
@@ -30,6 +30,7 @@
 	
 	<bean id="prestadores.action.json" class="ar.com.softtek.academia.web.action.json.PrestadorActionJSON">
 		<property name="practicaService" ref="practica.service" />
+		<property name="prestadorService" ref="prestador.service" />
 	</bean>
 
 </beans>

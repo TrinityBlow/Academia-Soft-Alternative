@@ -26,13 +26,13 @@ public class TurnoMapper {
 			turnoDTO.setImporteDelTurno(turnoToMap.getImporteDelTurno());
 			turnoDTO.setObservaciones(turnoToMap.getObservaciones());
 
-			PrestadorDTO prestadorDTO = PrestadorMapper.mapPrestadorToDTO(turnoToMap.getPrestador());
+			PrestadorDTO prestadorDTO = PrestadorMapper.mapPrestadorToDTOSimple(turnoToMap.getPrestador());
 			turnoDTO.setPrestadorDTO(prestadorDTO);
 			
 			ReservaDTO reservaDTO = ReservaMapper.mapReservaToDTO(turnoToMap.getReserva());
 			turnoDTO.setReservaDTO(reservaDTO);
 			
-			SocioDTO socioDTO = SocioMapper.mapSocioToDTO(turnoToMap.getSocio());
+			SocioDTO socioDTO = SocioMapper.mapSocioToDTOSimple(turnoToMap.getSocio());
 			turnoDTO.setSocioDTO(socioDTO);
 			
 			PracticaDTO practicaDTO = PracticaMapper.mapPracticaToDTO(turnoToMap.getPractica());

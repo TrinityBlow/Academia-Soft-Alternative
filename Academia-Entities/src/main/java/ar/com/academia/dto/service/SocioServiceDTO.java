@@ -13,7 +13,7 @@ public class SocioServiceDTO {
 	private String telefono;
 	private String direccion;
 	private String email;
-	private Integer planDTO;
+	private int planDTO;
 	private String password;
 	
 	
@@ -83,10 +83,10 @@ public class SocioServiceDTO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getPlanDTO() {
+	public int getPlanDTO() {
 		return planDTO;
 	}
-	public void setPlanDTO(Integer planDTO) {
+	public void setPlanDTO(int planDTO) {
 		this.planDTO = planDTO;
 	}
 	public String getPassword() {

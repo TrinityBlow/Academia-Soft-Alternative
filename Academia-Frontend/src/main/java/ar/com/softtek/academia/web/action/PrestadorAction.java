@@ -6,6 +6,7 @@ import java.util.List;
 import ar.com.academia.dto.HorarioDTO;
 import ar.com.academia.dto.PracticaDTO;
 import ar.com.academia.dto.PrestadorDTO;
+import ar.com.academia.dto.service.PrestadorServiceDTO;
 import ar.com.academia.entities.exception.ServiceException;
 import ar.com.academia.services.HorarioService;
 import ar.com.academia.services.PracticaService;
@@ -30,6 +31,8 @@ public class PrestadorAction extends ActionSupport {
 	private List<PracticaDTO> practicasElegidos;
 	private List<HorarioDTO> horarios;
 	private List<HorarioDTO> horariosElegidos;
+	private List<Integer> practicasElegidosId;
+	private PrestadorServiceDTO prestServ;
 	
 	private PrestadorDTO prestadorSelect;
 	
@@ -78,7 +81,7 @@ public class PrestadorAction extends ActionSupport {
 
 	public String addPrestador() {
 		try{
-			prestadorService.add(prestadorDTO);
+			prestadorService.add(prestServ);
 		} catch (ServiceException e){
 		
 			return ERROR;
@@ -99,8 +102,8 @@ public class PrestadorAction extends ActionSupport {
 		
 	
 		try {
+			practicasElegidosId = new ArrayList<Integer>();
 			this.setPracticas(practicaService.getAllPracticas());
-	
 			this.setHorarios(horarioService.getAllHorarios());
 			
 		} catch (ServiceException e) {
@@ -198,6 +201,14 @@ public class PrestadorAction extends ActionSupport {
 
 	public void setPracticasElegidos(List<PracticaDTO> practicasElegidos) {
 		this.practicasElegidos = practicasElegidos;
+	}
+
+	public List<Integer> getPracticasElegidosId() {
+		return practicasElegidosId;
+	}
+
+	public void setPracticasElegidosId(List<Integer> practicasElegidosId) {
+		this.practicasElegidosId = practicasElegidosId;
 	}
 	
 }

@@ -21,6 +21,8 @@
 		id="socio.service"
 	/>
 	
+
+	
 	<jaxws:client 
 		serviceClass="ar.com.academia.services.PrestadorService"
 		address="http://localhost:8080/Academia-Backend/webservices/PrestadorService"

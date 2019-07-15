@@ -9,28 +9,28 @@
 	<title>Registracion de Turno</title>
 	<link rel="stylesheet" type="text/css" href="./css/style-soc.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="./js/turno.js"></script> 
+	<script src="./js/turnoHorario.js"></script> 
+	<script src="./js/turnoPractica.js"></script> 
 	<sx:head />
 </head>
 <body>
 	<h2 id="titulo"> Registracion de Turno </h2>
 		<s:form id="target" action="/agregarTurno" name="target" method="post">
-	    <s:textfield id="asd" label="Importe:" type="number" name="turnoDTO.importe" ></s:textfield>
-	    <s:textfield label="Observaciones:" type="text" name="turnoDTO.observaciones" ></s:textfield>
-	    
-	    <s:select id="practicaListener" label="Practica:" name="practicaSelect" list="listaPracticasDTO" listKey="id" ></s:select>
-	    
-<%-- 		<s:iterator id="practicaListener" value="listaPracticasDTO" status="practica"> --%>
 		
-<%-- 		</s:iterator> --%>
+	    <s:select label="Socio:" list="listaSociosDTO" name="turnoServiceDTO.socioId"  listKey="id" ></s:select>
+	    
+	    <s:textfield id="asd" label="Importe:" type="number" step=".01" name="turnoServiceDTO.importe" ></s:textfield>
+	    
+	    <s:textfield label="Observaciones:" type="text" name="turnoServiceDTO.observaciones" ></s:textfield>
+	    
+	    <s:select id="practicaListener" headerKey="-1" headerValue="Elegir Practica" label="Practica:" name="turnoServiceDTO.practicaId" list="listaPracticasDTO" listKey="id" ></s:select>
 
-	    <s:select id="prestadoresListener" label="Prestador:" name="prestadorSelect" list="listaPrestadoresDTO" ></s:select>
-	   
-<%-- 		<sx:autocompleter size="1" list="practicas" name="practica"></sx:autocompleter> --%>
-
-        <s:textfield label="Fecha:" type="date" name="turnoDTO.fecha" ></s:textfield>
+	    <s:select id="prestadoresListener" label="Prestador:" name="turnoServiceDTO.prestadorId" list="#{}" ></s:select>
+	  
+        <s:textfield label="Fecha:" type="date" name="turnoServiceDTO.fecha" ></s:textfield>
         
-	    <s:select id="horariosListener" label="Horario:" name="horarioSelect" list="listaHorariosDTO" ></s:select>
+	    <s:select id="horariosListener" label="Horario:" name="turnoServiceDTO.horarioId" list="#{}" ></s:select>
+	    
 	    <br><br>
 	    <s:submit label="Registrar Turno"></s:submit>
 	</s:form> 

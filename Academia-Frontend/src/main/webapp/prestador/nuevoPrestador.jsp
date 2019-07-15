@@ -20,9 +20,26 @@
 	    <s:textfield label="Nombre:" type="text" name="prestadorDTO.nombre" ></s:textfield>
 	    <s:textfield label="Apellido:" type="text" name="prestadorDTO.apellido" ></s:textfield>
 	    <s:textfield label="Email:" type="text" name="prestadorDTO.email" ></s:textfield>
-	    <s:textfield label="Telefono:" type="number" name="prestadorDTO.telefono" ></s:textfield>
-	    <s:textfield label="Nro de Practica:" type="number" name="prestadorDTO.practica" ></s:textfield>
-	    <s:textfield label="Franja horaria:" type="text" name="prestadorDTO.franjaHoraria" ></s:textfield>
+	    <s:textfield label="Telefono:" type="number" name="prestadorDTO.telefono" ></s:textfield>  
+	     
+ 		<tr>
+ 			<td class="tdLabel"><label class="label">Practicas:</label></td>
+	 		<td>
+		 		<s:iterator value="practicas" status="p">
+					<input type="checkbox" name="practicasElegidosId" value=<s:property value="id"/> /> <label><s:property value="descripcion"/></label>
+				</s:iterator>
+			</td>
+	    </tr>
+	    <tr>
+ 		<td class="tdLabel"><label class="label">Horarios:</label></td>
+	 		<td>
+		 		<s:iterator value="horarios" status="p">
+					<input type="checkbox" name="horariosElegidosId" value=<s:property value="id"/> /> <label><s:property value="formarHora"/></label>
+				</s:iterator>
+			</td>
+	    </tr>
+<%-- 	    <s:checkboxlist label="Horarios" list="horarios" name="horariosElegidos" value="id" /> --%>
+	    
 	    <br><br>
 	    <s:submit label="Registrar Prestador"></s:submit>
 	</s:form> 

@@ -19,7 +19,7 @@ public interface PlanService {
 
 	@WebMethod(operationName = "GetAllPlanes")
 	@WebResult(name = "GetAllPlanesResult")
-	public ArrayList<PlanDTO> getAllPlanes() throws ServiceException;
+	public List<PlanDTO> getAllPlanes() throws ServiceException;
 
 	@WebMethod(operationName = "GetByIdPlan")
 	@WebResult(name = "GetByIdPlanResult")

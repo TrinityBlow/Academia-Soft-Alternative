@@ -12,7 +12,7 @@
 
 	<h2>Lista de Prestadores</h2>
 	<br><br>
-	<a href="./nuevoPrestadors"><button>
+	<a href="./nuevoPrestador.jsp"><button>
 	    Nuevo Prestador
 	</button></a>
 	<br><br>

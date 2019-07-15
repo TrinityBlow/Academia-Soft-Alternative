@@ -40,15 +40,21 @@
 	/>
 	
 	<jaxws:client 
-		serviceClass="ar.com.academia.services.PlanService"
-		address="http://localhost:8080/Academia-Backend/webservices/PlanService"
-		id="plan.service"
-	/>
-
-	<jaxws:client 
 		serviceClass="ar.com.academia.services.HorarioService"
 		address="http://localhost:8080/Academia-Backend/webservices/HorarioService"
 		id="horario.service"
 	/>
 	
+	<jaxws:client 
+		serviceClass="ar.com.academia.services.PlanService"
+		address="http://localhost:8080/Academia-Backend/webservices/PlanService"
+		id="plan.service"
+	/>
+	
+	<jaxws:client 
+		serviceClass="ar.com.academia.services.HorarioService"
+		address="http://localhost:8080/Academia-Backend/webservices/HorarioService"
+		id="horario.service"
+	/>
+
 </beans>

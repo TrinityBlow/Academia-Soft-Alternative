@@ -16,6 +16,19 @@ import ar.com.academia.entities.Prestador;
 
 public class PrestadorMapper {
 
+	public static PrestadorDTO mapPrestadorToDTOSimple(Prestador prestadorToMap){
+		PrestadorDTO prestadorDTO = null;
+		if(prestadorToMap != null) {
+			prestadorDTO = new PrestadorDTO();
+			prestadorDTO.setId(prestadorToMap.getId());
+			prestadorDTO.setNombre(prestadorToMap.getNombre());
+			prestadorDTO.setApellido(prestadorToMap.getApellido());
+			prestadorDTO.setTelefono(prestadorToMap.getTelefono());
+			prestadorDTO.setEmail(prestadorToMap.getEmail());
+		}
+		return prestadorDTO;
+	}
+	
 	public static PrestadorDTO mapPrestadorToDTO(Prestador prestadorToMap){
 		PrestadorDTO prestadorDTO = null;
 		if(prestadorToMap != null) {

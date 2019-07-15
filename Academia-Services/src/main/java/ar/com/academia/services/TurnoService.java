@@ -9,17 +9,18 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import ar.com.academia.dto.TurnoDTO;
+import ar.com.academia.dto.service.TurnoServiceDTO;
 import ar.com.academia.entities.exception.ServiceException;
 
 @WebService(name = "Turnos")
-@XmlSeeAlso({TurnoDTO.class})
+@XmlSeeAlso({TurnoDTO.class, TurnoServiceDTO.class})
 public interface TurnoService {
 	
 	@WebMethod(operationName = "AddTurno")
 	@WebResult(name = "AddTurnoResult")
 	public int addTurno(
 		@WebParam(name = "turnoAgregar")
-		TurnoDTO agregar
+		TurnoServiceDTO agregar
 			) throws ServiceException;
 
 

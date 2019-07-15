@@ -13,6 +13,27 @@ import ar.com.academia.entities.Turno;
 
 public class SocioMapper {
 
+	public static SocioDTO mapSocioToDTOSimple(Socio socioToMap){
+		SocioDTO socioDTO = null;
+		if(socioToMap != null) {
+			socioDTO = new SocioDTO();
+			socioDTO.setId(socioToMap.getId());
+			socioDTO.setNumeroSocio(socioToMap.getNumeroSocio());
+			socioDTO.setNombre(socioToMap.getNombre());
+			socioDTO.setApellido(socioToMap.getApellido());
+			socioDTO.setSexo(socioToMap.getSexo());
+			socioDTO.setEstadoCivil(socioToMap.getEstadoCivil());
+			socioDTO.setNombreConyuge(socioToMap.getNombreConyuge());
+			socioDTO.setCantidadHijos(socioToMap.getCantidadHijos());
+			socioDTO.setDni(socioToMap.getDni());
+			socioDTO.setTelefono(socioToMap.getTelefono());
+			socioDTO.setDireccion(socioToMap.getDireccion());
+			socioDTO.setEmail(socioToMap.getEmail());
+		}
+		
+		return socioDTO;
+	}
+	
 	public static SocioDTO mapSocioToDTO(Socio socioToMap){
 		SocioDTO socioDTO = null;
 		if(socioToMap != null) {

@@ -19,7 +19,7 @@
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
       
     <!-- Normal Action mappings are defined here -->
-    <package name="default" namespace="/" extends="struts-default">
+    <package name="default" namespace="/*" extends="struts-default">
         <!-- Two things to Notice:
              1) class is set to 'editEmployeeAction' which is bean defined by Spring context
              2) We have given the method to be called here as well;
@@ -31,16 +31,52 @@
 	   </action>  
 	   
         <action name="admin" class="com.ssh.actions.AdminAction" method="execute">
-        	<result name="success">Socio/nuevo.jsp</result>
+
+        	<result name="success">/nuevo.jsp</result>
+
         </action>
         
         <action name="login">  
             <result>/login.jsp</result>  
         </action> 
 	   
+        <action name="deleteSocio"  class="socio.action" method="deleteSocio">
+
+		
+        	<result name="success" type="redirect">listSocios</result>
+
+		</action>
+		
+		<action name="getSocio"  class="socio.action" method="obtenerSocio">
+        	<result name="success">/socio/modificarSocio.jsp</result>
+		</action>
+		
+		<action name="listSocios"  class="socio.action" method="listSocios">
+        	<result name="success">/socio/listarSocios.jsp</result>
+		</action>
+		
+		<action name="agregarSocio" class="socio.action" method="addSocio" >
+
+		
+          <result name="success" type="redirect">listSocios</result>
+
+        </action>
+        
+        <action name="updateSocio"  class="socio.action" method="updateSocio">
+
+		
+        	<result name="success" type="redirect">listSocios</result>
+			
+		</action>
+		
+		<action name="nuevoSocio"  class="socio.action" method="nuevoSocio">
+        	<result name="success" >/socio/nuevo.jsp</result>
+		</action>
 		
 		<action name="deletePrestador"  class="prestador.action" method="deletePrestador">
-        	<result name="success" type="redirect">prestador/listPrestadores</result>
+
+        	<result name="success" type="redirect">listPrestadores</result>
+
 		</action>
 		
 		<action name="getPrestador"  class="prestador.action" method="obtenerPrestador">
@@ -52,24 +88,32 @@
 		</action>
 		
 		<action name="agregarPrestador" class="prestador.action" method="addPrestador" >
-          <result name="success" type="redirect">prestador/listPrestadores</result>
+
+          <result name="success" type="redirect">listPrestadores</result>
+
         </action>
         
         <action name="updatePrestador"  class="prestador.action" method="updatePrestador">
-        	<result name="success" type="redirect">turno/listTurnos</result>
+
+
+        	<result name="success" type="redirect">listTurnos</result>
+
 		</action>
 		
 		<action name="nuevoPrestador"  class="prestador.action" method="nuevoPrestador">
-        	<result name="success">/nuevoPrestador.jsp</result>
+        	<result name="success">/prestador/nuevoPrestador.jsp</result>
 		</action>
 		
 		<action name="deleteTurno"  class="turno.action" method="deleteTurno">
-        	<result name="success" type="redirect">turno/listTurnos</result>
+
+
+        	<result name="success" type="redirect">listTurnos</result>
+
 		</action>
 		
 		
 		<action name="getTurno"  class="turno.action" method="obtenerTurno">
-        	<result name="success">/turno/modificarTurno.jsp</result>
+        	<result name="success">turno.jsp</result>
 		</action>
 		
 		<action name="listTurnos"  class="turno.action" method="listTurnos">
@@ -77,62 +121,72 @@
 		</action>
 		
 		<action name="agregarTurno" class="turno.action" method="addTurno" >
-          <result name="success" type="redirect">turno/listTurnos</result>
+
+
+          <result name="success" type="redirect">listTurnos</result>
+
         </action>
         
         <action name="updateTurno"  class="turno.action" method="updateTurno">
-        	<result name="success" type="redirect">turno/listTurnos</result>
+
+        	<result name="success" type="redirect">listTurnos</result>
+
 		</action>
 		
 		<action name="nuevoTurno"  class="turno.action" method="nuevoTurno">
-        	<result name="success">turno/nuevoTurno.jsp</result>
+        	<result name="success">/turno/nuevoTurno.jsp</result>
 		</action>
+		
+		<action name="listTurnosRefresh"  class="turno.action" method="displayTagRefresh">
+        	<result name="success">/turno/listarTurnos.jsp</result>
+		</action>
+		
+		<action name="searchNombreSocio"  class="turno.action" method="searchNombreSocio">
+        	<result name="success">/turno/listarTurnos.jsp</result>
+		</action>
+		
+		
+		
 				
     </package>
     
-    <package name="Socio" namespace="/Socio" extends="struts-default">
-    
-        <action name="deleteSocio"  class="socio.action" method="deleteSocio">
-        	<result name="success" type="redirect">listSocios</result>
-		</action>
-		
-		<action name="getSocio"  class="socio.action" method="obtenerSocio">
-        	<result name="success">/socio/modificarSocio.jsp</result>
-		</action>
-		
-		<action name="listSocios"  class="socio.action" method="listSocios">
-        	<result name="success">/socio/listarSocios.jsp</result>
-<!--           	<result name="input">/socio/listarSocios.jsp</result> -->
-		</action>
-		
-		<action name="agregarSocio" class="socio.action" method="addSocio" >
-          <result name="success" type="redirect">listSocios</result>
-<!--           <result name="input" type="redirect">listSocios</result> -->
-        </action>
-        
-        <action name="updateSocio"  class="socio.action" method="updateSocio">
-        	<result name="success" type="redirect">listSocios</result>
-		</action>
-		
-		<action name="nuevoSocio"  class="socio.action" method="nuevoSocio">
-        	<result name="success" >/socio/nuevo.jsp</result>
-		</action>
-		
-    </package>
-    
-    <package name="ajaxMethods" extends="json-default" namespace="/ajax">    
-		<action name="getPrestadoresByPractica" class="prestadores.action.json" method="writeJSON">
+    <package name="ajaxMethods" extends="json-default" namespace="/ajax">
+		<interceptors>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="defaultStack" />
+<!-- 		<action name="getPrestadoresByPractica" class="prestadores.action.json" method="writeJSON"> -->
 	
-	        <interceptor-ref name="json">
-	            <param name="enableSMD">true</param>
-	        </interceptor-ref>
-	        <result type="json">
-	             <param name="enableSMD">true</param>
-	        </result>
+<!-- 	        <interceptor-ref name="json"> -->
+<!-- 	            <param name="enableSMD">true</param> -->
+<!-- 	        </interceptor-ref> -->
+<!-- 	        <result type="json"> -->
+<!-- 	             <param name="enableSMD">true</param> -->
+<!-- 			    <param name="root">action</param> -->
+<!-- 				<param name="excludeNullProperties">true</param> -->
+<!-- 			     <param name="includeProperties">prestadoresDTO</param> -->
+<!-- 			    <param name="noCache">true</param> -->
+<!-- 	        </result> -->
 	        
+<!-- 		</action> -->
+		
+		<action name="getPrestadoresByPractica" class="prestadores.action.json" method="writeJSON">
+	        <result type="json">
+		        <param name="noCache">true</param>
+		        <param name="root">jsonString</param>
+	        </result>	        
 		</action>
+		<action name="getHorarioByPrestador" class="prestadores.action.json" method="writeJSONHorario">
+	        <result type="json">
+		        <param name="noCache">true</param>
+		        <param name="root">jsonString</param>
+	        </result>	        
+		</action>
+		
 	</package>
-     
-     
      
 </struts>

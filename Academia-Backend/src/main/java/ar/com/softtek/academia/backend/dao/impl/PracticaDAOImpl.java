@@ -73,6 +73,7 @@ public class PracticaDAOImpl extends GenericDAOImpl<Practica> implements Practic
 		Session session = this.getSessionFactory().openSession();
 		
 		session.beginTransaction();
+		
     	Criteria criteria = session.createCriteria(getType());
     	criteria.add(Restrictions.eq("id", id));
     	practica = (Practica) criteria.uniqueResult();

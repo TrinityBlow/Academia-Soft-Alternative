@@ -19,7 +19,7 @@
 
 		<property name="fecha" column="FECHA" />
 				
-		<many-to-one name="horario"> 
+		<many-to-one name="horario" lazy="false"> 
 		   <column name="ID_HORARIO"></column> 
 		</many-to-one>
 							

@@ -9,15 +9,16 @@ import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 
 import ar.com.academia.dto.PrestadorDTO;
+import ar.com.academia.dto.service.PrestadorServiceDTO;
 import ar.com.academia.entities.exception.ServiceException;
 
 @WebService(name = "Prestadores")
-@XmlSeeAlso({PrestadorDTO.class})
+@XmlSeeAlso({PrestadorDTO.class,PrestadorServiceDTO.class})
 public interface PrestadorService {
 	
 	@WebMethod(operationName="addPrestador")
 	@WebResult(name="id")
-	int add(@WebParam(name="prestador")PrestadorDTO prestador) throws ServiceException;
+	int add(@WebParam(name="prestador")PrestadorServiceDTO prestador) throws ServiceException;
 	
 	@WebMethod(operationName="getAllPrestadores")
 	@WebResult(name="prestadores")

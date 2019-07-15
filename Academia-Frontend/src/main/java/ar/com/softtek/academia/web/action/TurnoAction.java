@@ -5,56 +5,83 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-import ar.com.academia.dto.HorarioDTO;
 import ar.com.academia.dto.PracticaDTO;
-import ar.com.academia.dto.PrestadorDTO;
+import ar.com.academia.dto.SocioDTO;
 import ar.com.academia.dto.TurnoDTO;
+import ar.com.academia.dto.service.TurnoServiceDTO;
 import ar.com.academia.entities.exception.ServiceException;
 import ar.com.academia.services.PracticaService;
-import ar.com.academia.services.PrestadorService;
 import ar.com.academia.services.TurnoService;
+import ar.com.academia.services.SocioService;
 
 public class TurnoAction extends ActionSupport{
 
 	private TurnoService turnoService;
 	private PracticaService practicaService;
-	private PrestadorService prestadorService;
-	private TurnoDTO turnoDTO;
+	private SocioService socioService;
+	
+	private String turnoElegido;
 	private String idTurno;
+	
+	
 	private List<TurnoDTO> listaTurnosDTO;
-	
-	private List<PrestadorDTO> listaPrestadoresDTO;
 	private List<PracticaDTO> listaPracticasDTO;
-	private List<HorarioDTO> listaHorariosDTO;
+	private List<SocioDTO> listaSociosDTO;
+	private List<String> listaTurnosNombre;
 	
+	public List<String> getListaTurnosNombre() {
+		return listaTurnosNombre;
+	}
+
+	public void setListaTurnosNombre(List<String> listaTurnosNombre) {
+		this.listaTurnosNombre = listaTurnosNombre;
+	}
+
 	private String fechaSelect;
-	private PracticaDTO practicaSelect;
-	private PrestadorDTO prestadorSelect;
-	private HorarioDTO horarioSelect;
+	
+	private TurnoServiceDTO turnoServiceDTO;
 	
 	
+	
+	
+	public String getTurnoElegido() {
+		return turnoElegido;
+	}
+
+	public void setTurnoElegido(String turnoElegido) {
+		this.turnoElegido = turnoElegido;
+	}
+
+	public TurnoServiceDTO getTurnoServiceDTO() {
+		return turnoServiceDTO;
+	}
+
+	public void setTurnoServiceDTO(TurnoServiceDTO turnoServiceDTO) {
+		this.turnoServiceDTO = turnoServiceDTO;
+	}
+
+	public SocioService getSocioService() {
+		return socioService;
+	}
+
+	public void setSocioService(SocioService socioService) {
+		this.socioService = socioService;
+	}
+
+	public List<SocioDTO> getListaSociosDTO() {
+		return listaSociosDTO;
+	}
+
+	public void setListaSociosDTO(List<SocioDTO> listaSociosDTO) {
+		this.listaSociosDTO = listaSociosDTO;
+	}
+
 	public PracticaService getPracticaService() {
 		return practicaService;
 	}
 
 	public void setPracticaService(PracticaService practicaService) {
 		this.practicaService = practicaService;
-	}
-
-	public PrestadorService getPrestadorService() {
-		return prestadorService;
-	}
-
-	public void setPrestadorService(PrestadorService prestadorService) {
-		this.prestadorService = prestadorService;
-	}
-
-	public List<PrestadorDTO> getListaPrestadoresDTO() {
-		return listaPrestadoresDTO;
-	}
-
-	public void setListaPrestadoresDTO(List<PrestadorDTO> listaPrestadoresDTO) {
-		this.listaPrestadoresDTO = listaPrestadoresDTO;
 	}
 
 	public List<PracticaDTO> getListaPracticasDTO() {
@@ -65,13 +92,6 @@ public class TurnoAction extends ActionSupport{
 		this.listaPracticasDTO = listaPracticasDTO;
 	}
 
-	public List<HorarioDTO> getListaHorariosDTO() {
-		return listaHorariosDTO;
-	}
-
-	public void setListaHorariosDTO(List<HorarioDTO> listaHorariosDTO) {
-		this.listaHorariosDTO = listaHorariosDTO;
-	}
 
 	public String getFechaSelect() {
 		return fechaSelect;
@@ -79,30 +99,6 @@ public class TurnoAction extends ActionSupport{
 
 	public void setFechaSelect(String fechaSelect) {
 		this.fechaSelect = fechaSelect;
-	}
-
-	public PracticaDTO getPracticaSelect() {
-		return practicaSelect;
-	}
-
-	public void setPracticaSelect(PracticaDTO practicaSelect) {
-		this.practicaSelect = practicaSelect;
-	}
-
-	public PrestadorDTO getPrestadorSelect() {
-		return prestadorSelect;
-	}
-
-	public void setPrestadorSelect(PrestadorDTO prestadorSelect) {
-		this.prestadorSelect = prestadorSelect;
-	}
-
-	public HorarioDTO getHorarioSelect() {
-		return horarioSelect;
-	}
-
-	public void setHorarioSelect(HorarioDTO horarioSelect) {
-		this.horarioSelect = horarioSelect;
 	}
 
 	public void setListaTurnosDTO(List<TurnoDTO> listaTurnosDTO) {
@@ -127,25 +123,11 @@ public class TurnoAction extends ActionSupport{
 	
 	public List<TurnoDTO> getListaTurnosDTO() {
 		return listaTurnosDTO;
-	}
-
-	public void setListaSociosDTO(List<TurnoDTO> listaTurnosDTO) {
-		this.listaTurnosDTO = listaTurnosDTO;
-	}
-
-	public TurnoDTO getTurnoDTO() {
-		return turnoDTO;
-	}
-
-	public void setTurnoDTO(TurnoDTO turnoDTO) {
-		this.turnoDTO = turnoDTO;
-	}
-
-	
+	}	
 
 	public String addTurno() {
 		try{
-			turnoService.addTurno(turnoDTO);
+			turnoService.addTurno(turnoServiceDTO);
 		} catch (ServiceException e){
 		
 			return ERROR;
@@ -164,20 +146,13 @@ public class TurnoAction extends ActionSupport{
 		return SUCCESS;
 	}
 
-	public String updateTurno(){
-		try{
-			turnoDTO.setId(Integer.parseInt(idTurno));
-			turnoService.updateTurno(turnoDTO);
-		} catch (ServiceException e){
-		
-			return ERROR;
-		}
-		return SUCCESS;
-	}
-
 	public String listTurnos(){
 		try{
 			listaTurnosDTO = turnoService.getAllTurnos();
+			listaTurnosNombre = new ArrayList<String>();
+			for(TurnoDTO turno : listaTurnosDTO) {
+				listaTurnosNombre.add(turno.getSocioDTO().getNombre());
+			}
 		} catch (ServiceException e){
 		
 			return ERROR;
@@ -186,33 +161,40 @@ public class TurnoAction extends ActionSupport{
 	}
 
 	public String obtenerTurno(){
-		try{
-			turnoDTO = turnoService.getByIdTurno(Integer.parseInt(idTurno));
-		} catch (ServiceException e){
-		
-			return ERROR;
-		}
+//		try{
+//			
+//			turnoElegido = turnoService.getByIdTurno(Integer.parseInt(idTurno));
+//		} catch (ServiceException e){
+//		
+//			return ERROR;
+//		}
 		return SUCCESS;
 	}
 	
 	public String nuevoTurno(){
 		try{
-			listaPrestadoresDTO = prestadorService.getAllPrestadores();
 			listaPracticasDTO = practicaService.getAllPracticas();
-			listaHorariosDTO = new ArrayList<HorarioDTO>();
+			listaSociosDTO = socioService.getAll();
+			if(listaPracticasDTO == null) {
+				listaPracticasDTO = new ArrayList<PracticaDTO>();
+			}
+			if(listaSociosDTO == null) {
+				listaSociosDTO = new ArrayList<SocioDTO>();
+			}
 		} catch (ServiceException e){
 			return ERROR;
 		}
 		return SUCCESS;
 	}
 	
-	public String getPrestadoresByPractica(){
-		try{
-			listaPrestadoresDTO = prestadorService.getAllPrestadores();
-			listaHorariosDTO = listaPrestadoresDTO.get(0).getHorasDTO();
-		} catch (ServiceException e){
-			return ERROR;
-		}
+	
+	//metodo que se usa a travez del dispplay tag para evitar volver a llamar al backend
+	public String displayTagRefresh() {
 		return SUCCESS;
 	}
+	
+	public String searchNombreSocio() {
+		return SUCCESS;
+	}
+	
 }

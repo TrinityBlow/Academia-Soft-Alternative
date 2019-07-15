@@ -41,7 +41,6 @@ public class SocioBOImpl implements SocioBO {
 		try{
 			PlanDTO buscarPlan = planBO.getPlanById(entidad.getPlanDTO());
 			SocioDTO socioDTO = new SocioDTO();
-			List<TurnoDTO> turnos= new ArrayList<TurnoDTO>();
 			
 			socioDTO.setApellido(entidad.getApellido());
 			socioDTO.setCantidadHijos(entidad.getCantidadHijos());
@@ -55,7 +54,6 @@ public class SocioBOImpl implements SocioBO {
 			socioDTO.setPlanDTO(buscarPlan);
 			socioDTO.setSexo(entidad.getSexo());
 			socioDTO.setTelefono(entidad.getTelefono());
-			socioDTO.setTurnosDTO(turnos);
 			
 			SocioDTO socioDTOCreado = socioDAO.saveSocio(socioDTO);
 			

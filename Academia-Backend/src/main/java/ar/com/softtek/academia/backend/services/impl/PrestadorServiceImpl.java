@@ -8,6 +8,7 @@ import javax.jws.WebResult;
 import javax.jws.WebService;
 
 import ar.com.academia.dto.PrestadorDTO;
+import ar.com.academia.dto.service.PrestadorServiceDTO;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.ServiceException;
 import ar.com.academia.services.PrestadorService;
@@ -26,7 +27,7 @@ public class PrestadorServiceImpl implements PrestadorService {
 		this.prestadorBO = prestadorBO;
 	}
 
-	public int add(PrestadorDTO agregar) throws ServiceException {
+	public int add(PrestadorServiceDTO agregar) throws ServiceException {
 		try{
 			PrestadorDTO prestadorDTOAgregado;
 			prestadorDTOAgregado = prestadorBO.crearPrestador(agregar);

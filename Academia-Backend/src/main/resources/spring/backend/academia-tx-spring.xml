@@ -21,12 +21,11 @@
 	<!-- ********************** -->
 	<!-- CONFIGURACION BASE DE HIBERNATE -->
 	<!-- ********************** -->
-	<bean class="org.springframework.jndi.JndiObjectFactoryBean" id="spring.datasource">
-		<property name="jndiName" value="jdbc/osdeDS"/>		
-		<property name="proxyInterface" value="javax.sql.DataSource"/>		
-		<property name="resourceRef" value="true"/>	
+	<bean id="spring.datasource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/osdeDS" />
+		<property name="proxyInterface" value="javax.sql.DataSource" />
+		<property name="resourceRef" value="true" />
 	</bean>
-
 
 
 <!-- 		<property name="jndiName" value="java:jdbc/osdeDS" /> -->
