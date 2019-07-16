@@ -1,23 +1,35 @@
 package ar.com.softtek.academia.backend.dao.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 
+import ar.com.academia.dto.HorarioDTO;
+import ar.com.academia.dto.PracticaDTO;
 import ar.com.academia.dto.PrestadorDTO;
+import ar.com.academia.entities.Horario;
+import ar.com.academia.entities.Practica;
 import ar.com.academia.entities.Prestador;
 import ar.com.academia.entities.exception.PersistenceException;
+import ar.com.softtek.academia.backend.dao.HorarioDAO;
+import ar.com.softtek.academia.backend.dao.PracticaDAO;
 import ar.com.softtek.academia.backend.dao.PrestadorDAO;
 import ar.com.softtek.academia.backend.dao.impl.mapper.PrestadorMapper;
 
 public class PrestadorDAOImpl extends GenericDAOImpl<Prestador> implements PrestadorDAO {
 
+
+	
 	@Override
 	public Class<Prestador>getType(){
 		return Prestador.class;
 	}
 	
+
+
 	private List<PrestadorDTO> createListPrestadoresDTO(List<Prestador> prestadores){
 		Prestador prestador;
 		PrestadorDTO prestadorDTOAgregar;
@@ -55,12 +67,11 @@ public class PrestadorDAOImpl extends GenericDAOImpl<Prestador> implements Prest
 	}
 
 	@Override
-	public PrestadorDTO savePrestador(PrestadorDTO entidad) throws PersistenceException {
+	public PrestadorDTO savePrestador(Prestador entidad) throws PersistenceException {
 		try{
 			PrestadorDTO prestadorDTOAgregado;
-			Prestador prestadorAgregar = PrestadorMapper.mapDTOToPrestador(entidad);
-			this.save(prestadorAgregar);
-			prestadorDTOAgregado = PrestadorMapper.mapPrestadorToDTO(prestadorAgregar);
+			this.save(entidad);
+			prestadorDTOAgregado = PrestadorMapper.mapPrestadorToDTO(entidad);
 			return prestadorDTOAgregado;
 		} catch (PersistenceException e){
 			throw new PersistenceException();
@@ -108,7 +119,6 @@ public class PrestadorDAOImpl extends GenericDAOImpl<Prestador> implements Prest
 			throw new PersistenceException();
 		} 
 	}
-
 	
 	
 }

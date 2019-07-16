@@ -28,7 +28,19 @@ public class TurnoAction extends ActionSupport{
 	private List<PracticaDTO> listaPracticasDTO;
 	private List<SocioDTO> listaSociosDTO;
 	private List<String> listaTurnosNombre;
+
+	private List<String> languages;
 	
+	
+	
+	public List<String> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(List<String> languages) {
+		this.languages = languages;
+	}
+
 	public List<String> getListaTurnosNombre() {
 		return listaTurnosNombre;
 	}
@@ -148,6 +160,13 @@ public class TurnoAction extends ActionSupport{
 
 	public String listTurnos(){
 		try{
+			languages = new ArrayList<String>();
+			languages.add("a");
+			languages.add("asd");
+			languages.add("acx");
+			languages.add("d");
+			languages.add("dewr");
+			languages.add("ter");
 			listaTurnosDTO = turnoService.getAllTurnos();
 			listaTurnosNombre = new ArrayList<String>();
 			for(TurnoDTO turno : listaTurnosDTO) {

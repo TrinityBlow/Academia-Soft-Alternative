@@ -32,9 +32,10 @@ public class PrestadorAction extends ActionSupport {
 	private List<HorarioDTO> horarios;
 	private List<HorarioDTO> horariosElegidos;
 	private List<Integer> practicasElegidosId;
-	private PrestadorServiceDTO prestServ;
 	
 	private PrestadorDTO prestadorSelect;
+	
+	private PrestadorServiceDTO prestadorServiceDTO;
 	
 	public PrestadorDTO getPrestadorSelect() {
 		return prestadorSelect;
@@ -44,6 +45,14 @@ public class PrestadorAction extends ActionSupport {
 		this.prestadorSelect = prestadorSelect;
 	}
 
+
+	public PrestadorServiceDTO getPrestadorServiceDTO() {
+		return prestadorServiceDTO;
+	}
+
+	public void setPrestadorServiceDTO(PrestadorServiceDTO prestadorServiceDTO) {
+		this.prestadorServiceDTO = prestadorServiceDTO;
+	}
 
 	public PrestadorService getPrestadorService() {
 		return prestadorService;
@@ -81,7 +90,8 @@ public class PrestadorAction extends ActionSupport {
 
 	public String addPrestador() {
 		try{
-			prestadorService.add(prestServ);
+			prestadorService.add(prestadorServiceDTO);
+			
 		} catch (ServiceException e){
 		
 			return ERROR;

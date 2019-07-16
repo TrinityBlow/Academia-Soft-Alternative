@@ -5,14 +5,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.Criteria;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
-
 
 import ar.com.academia.dto.TurnoDTO;
-import ar.com.academia.entities.Practica;
 import ar.com.academia.entities.Turno;
 import ar.com.academia.entities.exception.PersistenceException;
 import ar.com.softtek.academia.backend.dao.TurnoDAO;

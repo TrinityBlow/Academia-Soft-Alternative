@@ -18,6 +18,8 @@
 	
 	<bean id="prestador.bo" class="ar.com.softtek.academia.backend.bo.impl.PrestadorBOImpl">
 		<property ref="prestadorDAO" name="prestadorDAO"/>
+		<property ref="horario.dao" name="horarioDAO"/>
+		<property ref="practica.dao" name="practicaDAO"/>
 	</bean>
 	
 	<bean id="turno.bo" class="ar.com.softtek.academia.backend.bo.impl.TurnoBOImpl">

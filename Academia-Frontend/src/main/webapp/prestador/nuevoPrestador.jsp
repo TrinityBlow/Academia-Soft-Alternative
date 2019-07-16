@@ -15,18 +15,18 @@
 <body>
 	<h2 id="titulo"> Registracion de Prestador </h2>
 	<s:form id="target" action="/agregarPrestador" name="target" method="post">
-	    <s:textfield label="Nro prestador" type="number" name="prestadorDTO.numeroPrestador" ></s:textfield>
+	    <s:textfield label="Nro prestador" type="number" name="prestadorServiceDTO.numeroPrestador" ></s:textfield>
 		<sx:autocompleter size="1" list="countries" name="country"></sx:autocompleter>
-	    <s:textfield label="Nombre:" type="text" name="prestadorDTO.nombre" ></s:textfield>
-	    <s:textfield label="Apellido:" type="text" name="prestadorDTO.apellido" ></s:textfield>
-	    <s:textfield label="Email:" type="text" name="prestadorDTO.email" ></s:textfield>
-	    <s:textfield label="Telefono:" type="number" name="prestadorDTO.telefono" ></s:textfield>  
+	    <s:textfield label="Nombre:" type="text" name="prestadorServiceDTO.nombre" ></s:textfield>
+	    <s:textfield label="Apellido:" type="text" name="prestadorServiceDTO.apellido" ></s:textfield>
+	    <s:textfield label="Email:" type="text" name="prestadorServiceDTO.email" ></s:textfield>
+	    <s:textfield label="Telefono:" type="number" name="prestadorServiceDTO.telefono" ></s:textfield>  
 	     
  		<tr>
  			<td class="tdLabel"><label class="label">Practicas:</label></td>
 	 		<td>
 		 		<s:iterator value="practicas" status="p">
-					<input type="checkbox" name="practicasElegidosId" value=<s:property value="id"/> /> <label><s:property value="descripcion"/></label>
+					<input type="checkbox" name="prestadorServiceDTO.practicas" value=<s:property value="id"/> /> <label><s:property value="descripcion"/></label>
 				</s:iterator>
 			</td>
 	    </tr>
@@ -34,7 +34,7 @@
  		<td class="tdLabel"><label class="label">Horarios:</label></td>
 	 		<td>
 		 		<s:iterator value="horarios" status="p">
-					<input type="checkbox" name="horariosElegidosId" value=<s:property value="id"/> /> <label><s:property value="formarHora"/></label>
+					<input type="checkbox" name="prestadorServiceDTO.horarios" value=<s:property value="id"/> /> <label><s:property value="formarHora"/></label>
 				</s:iterator>
 			</td>
 	    </tr>

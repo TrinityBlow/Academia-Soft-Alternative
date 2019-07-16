@@ -22,7 +22,7 @@
 		   <one-to-many class="ar.com.academia.entities.Turno"></one-to-many>
 		</list>
 		
-		<set name="prestadores" table="PRESTADOR_PRACTICA" lazy="true" >
+		<set name="prestadores" table="PRESTADOR_PRACTICA" lazy="true" inverse="true" >
             <key>
                 <column name="ID_PRACTICA" not-null="true" />
             </key>

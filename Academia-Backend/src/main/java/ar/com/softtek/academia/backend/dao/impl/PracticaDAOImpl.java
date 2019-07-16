@@ -28,6 +28,7 @@ public class PracticaDAOImpl extends GenericDAOImpl<Practica> implements Practic
 		return Practica.class;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<PracticaDTO> getAllPracticas() throws PersistenceException{
 		try{
@@ -64,7 +65,6 @@ public class PracticaDAOImpl extends GenericDAOImpl<Practica> implements Practic
 	}
 	
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<PrestadorDTO> getPrestadores(int id) throws PersistenceException {
 		List<PrestadorDTO> prestadoresDTO;

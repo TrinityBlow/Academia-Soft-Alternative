@@ -16,7 +16,7 @@
 		<property name="email" column="EMAIL" />
 		 
 
-		<set name="horas" table="PRESTADOR_HORARIO" lazy="false" fetch="select" cascade="all" >
+		<set name="horas" table="PRESTADOR_HORARIO" lazy="false" fetch="select" cascade="all" inverse="false">
             <key>
                 <column name="ID_PRESTADOR" not-null="true" />
             </key>
@@ -25,7 +25,7 @@
             </many-to-many>
         </set>
         
-        <set name="practicas" table="PRESTADOR_PRACTICA" lazy="false" fetch="select" cascade="all" >
+        <set name="practicas" table="PRESTADOR_PRACTICA" lazy="false" fetch="select" cascade="all" inverse="false" >
             <key>
                 <column name="ID_PRESTADOR" not-null="true" />
             </key>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,7 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" href="././css/table.css">
     <title>Lista de Turnos</title>
-	<sx:head />
+	<script src="./js/autocompleter.js"></script> 
+	<sj:head jqueryui="true"/>
 </head>
 <body>
 <div class="contenedor">
@@ -18,7 +20,33 @@
 				<input id="buscar" type="search" value="Search">
 			</form>
       </header>
-
+	<s:form id="form" action="echo" theme="simple" cssClass="yform">
+		<fieldset>
+			<legend>Select Box as Autocompleter</legend>
+			<div class="type-select">
+				<label for="echo">Echo: </label>
+				<sj:autocompleter
+						id="customers"
+						name="echo"
+						list="%{listaTurnosDTO}"
+						listValue="nombre"
+						listKey="id"
+						selectBox="true"
+						selectBoxIcon="true"
+						onChangeTopics="autocompleteChange"
+						onFocusTopics="autocompleteFocus"
+						onSelectTopics="autocompleteSelect"
+						/>
+			</div>
+			<br><br>
+   			<sj:autocompleter id="languages" list="%{languages}"/>
+   			<br><br>
+   			<sj:autocompleter id="listaTurnosDTO" list="%{id}"/>
+   			<br><br>
+   			<sj:autocompleter id="listaTurnosDTO" list="%{listaTurnosDTO.id}"/>
+		</fieldset>
+	</s:form>
+	<br><br>
         <section class="boxMain">
 
 			<div class="Pacientes">
@@ -102,7 +130,7 @@
 					<br>
 			<div class="paciente">
 				<div class="tablaPaciente">
-					<display:table id="Paciente1" name="listaTurnosDTO" pagesize="2" requestURI="/listTurnosRefresh">
+					<display:table id="Paciente1" name="listaTurnosDTO" uid="row" pagesize="2" requestURI="/listTurnosRefresh" sort="list">
 					    <display:column property="id" title="Numero Turno" sortable="true"/>
 					    <display:column property="importeDelTurno" title="Importe Del Turno" sortable="true"/>
 					    <display:column property="reservaDTO.fecha" title="Fecha" sortable="true"/>
@@ -116,17 +144,17 @@
 					    <display:column property="socioDTO.email" title="Email Socio" sortable="true"/>
 					    <display:column property="prestadorDTO.nombre" title="Nombre Prestador" sortable="true"/>
 					    <display:column property="prestadorDTO.apellido" title="Apellido Prestador" sortable="true"/>
+			           	<display:column title="Opciones">
+						<s:a action="deleteTurno"> <s:param name="idTurno" value="%{#attr.row.id}"/>
+										<button> Eliminar</button>
+						</s:a>
+       					</display:column>
 					</display:table>
 				</div>
 			</div>
 		</section>
-							<s:form action="searchNombreSocio" namespace="/" method="POST" >
-					
-<%-- 						<sx:autocompleter label="Turno por Nombre de Socio" list="listaTurnosNombre>" name="turnoElegido" />	 --%>
-						
-						<sx:autocompleter label="What's your lucky number?" name="turnoElegido" autoComplete="false" list="{'1','12','13','14','21','22','23','24','31','32','33','34','41','42','43','44'}" />
-						
-						<s:submit value="submit" name="buscar" />			
-					</s:form>
+		
+
+			
 </body>
 </html>

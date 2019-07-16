@@ -147,15 +147,17 @@ public class SocioAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public String updateSocio(){
-		try{
-			socioService.updateSocio(this.getSocioDTO());
-		} catch (ServiceException e){
-		
-			return ERROR;
-		}
-		return SUCCESS;
-	}
+//	public String updateSocio(){
+//		try{
+//			planDTO = planService.getByIdPlan(planId);
+//			socioDTO.setPlanDTO(planDTO);
+//			socioService.updateSocio(this.getSocioDTO());
+//		} catch (ServiceException e){
+//		
+//			return ERROR;
+//		}
+//		return SUCCESS;
+//	}
 
 	public String listSocios(){
 		try{

@@ -3,9 +3,13 @@ package ar.com.softtek.academia.backend.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
+
 
 import ar.com.academia.dto.HorarioDTO;
 import ar.com.academia.entities.Horario;
+import ar.com.academia.entities.Practica;
 import ar.com.academia.entities.exception.PersistenceException;
 import ar.com.softtek.academia.backend.dao.HorarioDAO;
 import ar.com.softtek.academia.backend.dao.impl.mapper.HorarioMapper;
@@ -17,6 +21,7 @@ public class HorarioDAOImpl extends GenericDAOImpl<Horario> implements HorarioDA
 		return Horario.class;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<HorarioDTO> getAllHorarios() throws PersistenceException{
 		try{
