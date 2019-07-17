@@ -4,6 +4,7 @@ package ar.com.softtek.academia.backend.dao.impl;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
@@ -120,6 +121,32 @@ public class SocioDAOImpl extends GenericDAOImpl<Socio> implements SocioDAO {
 		
 		return resultsDTO;
 	}
+
+	@Override
+	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB, int dniB, int nroAfiB) throws PersistenceException {
+
+		List<SocioDTO> resultsDTO;
+		List<Socio> resultsSocios;
+		
+		String dniString = "%" + String.valueOf(dniB) + "%";
+
+
+		Session session = this.getSessionFactory().openSession();
+		session.beginTransaction();
+			String hql =
+						"FROM Socio as s"
+						+ " WHERE CAST(s.dni as string) LIKE :dni";
+			Query query = (Query) session.createQuery(hql);
+			query.setParameter("dni", dniString);
+			resultsSocios = (List<Socio>) query.list();
+		session.close();
+		
+		resultsDTO = SocioMapper.mapListSocioToDTO(resultsSocios);
+		
+		return resultsDTO; 
+	}
+	
+	
 	
 	/*
 	@Override

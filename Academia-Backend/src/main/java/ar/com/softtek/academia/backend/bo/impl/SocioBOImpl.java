@@ -124,6 +124,16 @@ public class SocioBOImpl implements SocioBO {
 		this.planBO = planBO;
 	}
 
+	@Override
+	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB, int dniB, int nroAfiB) throws BusinessException {
+		try{
+			List<SocioDTO> sociosBusqueda = socioDAO.buscarSocios(nombreB, apellidoB, dniB, nroAfiB);
+			return sociosBusqueda;
+		} catch (PersistenceException  e){
+			throw new BusinessException();
+		}
+	}
+
 	
 	/*
 	public List<SocioDTO> getAllBySexo(String sexo) throws BusinessException{
