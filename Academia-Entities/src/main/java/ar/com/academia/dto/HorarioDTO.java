@@ -47,7 +47,7 @@ public class HorarioDTO {
 		this.prestadoresDTO = prestadoresDTO;
 	}
     public String toString(){
-    	return this.getHoraInicio() + " a " + this.getHoraFin();
+    	return horaInicio + " a " + horaFin;
     }
     
     public String getFormarHora(){

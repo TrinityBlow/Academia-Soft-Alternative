@@ -1,0 +1,14 @@
+.inputCss {
+	width: 30%;
+	height: 25px;
+	margin-left: 15%;
+	border: 2px solid black;
+	background-color: white;
+    padding: 10px;
+	border-radius: 10px;
+	margin-top: 10px;
+	margin-bottom:1%;
+	flex-wrap: wrap;
+}
+
+.errorMessage{color:red;}  

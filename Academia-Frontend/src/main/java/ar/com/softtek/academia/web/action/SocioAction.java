@@ -5,8 +5,8 @@ import java.util.List;
 
 import ar.com.academia.dto.PlanDTO;
 import ar.com.academia.dto.SocioDTO;
+import ar.com.academia.dto.TurnoDTO;
 import ar.com.academia.dto.service.SocioServiceDTO;
-import ar.com.academia.dto.struts.PlanStruts;
 import ar.com.academia.entities.exception.ServiceException;
 import ar.com.academia.services.PlanService;
 import ar.com.academia.services.SocioService;
@@ -16,6 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 /**
  * Servlet implementation class SocioAction
  */
+
 public class SocioAction extends ActionSupport {
 
 	/**
@@ -24,24 +25,75 @@ public class SocioAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private SocioService socioService;
 	private PlanService planService;
+	
 	private SocioDTO socioDTO;
+	private PlanDTO planDTO;
+	
 	private SocioServiceDTO socioServiceDTO;
-	private String idSocio;
+	
 	private List<SocioDTO> listaSociosDTO;
 	private List<PlanDTO> listaPlanesDTO;
-	private int planId;
-	
-	
-	
-	/*public Integer getPlanDTO() {
-		return planDTO;
+	private List<String> listaNombres;
+	private List<String> listaApellidos;
+	private List<String> listaDNI;
+
+	private String idSocio;
+	private String nombreB;
+	private String apellidoB;
+	private String dniB;	
+
+	public String getNombreB() {
+		return nombreB;
 	}
 
-	public void setPlanDTO(Integer planDTO) {
-		this.planDTO = planDTO;
-	}*/
+	public void setNombreB(String nombreB) {
+		this.nombreB = nombreB;
+	}
+
+	public String getApellidoB() {
+		return apellidoB;
+	}
+
+	public void setApellidoB(String apellidoB) {
+		this.apellidoB = apellidoB;
+	}
+
+	public String getDniB() {
+		return dniB;
+	}
+
+	public void setDniB(String dniB) {
+		this.dniB = dniB;
+	}
+
+	public List<String> getListaNombres() {
+		return listaNombres;
+	}
+
+	public void setListaNombres(List<String> listaNombres) {
+		this.listaNombres = listaNombres;
+	}
+
+	public List<String> getListaApellidos() {
+		return listaApellidos;
+	}
+
+	public void setListaApellidos(List<String> listaApellidos) {
+		this.listaApellidos = listaApellidos;
+	}
 
 
+	public List<String> getListaDNI() {
+		return listaDNI;
+	}
+
+	public void setListaDNI(List<String> listaDNI) {
+		this.listaDNI = listaDNI;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	public SocioServiceDTO getSocioServiceDTO() {
 		return socioServiceDTO;
@@ -101,6 +153,14 @@ public class SocioAction extends ActionSupport {
 		this.socioDTO = socioDTO;
 	}
 
+	public PlanDTO getPlanDTO() {
+		return planDTO;
+	}
+
+	public void setPlanDTO(PlanDTO planDTO) {
+		this.planDTO = planDTO;
+	}
+
 	
 	public String nuevoSocio(){
 		try{
@@ -112,20 +172,6 @@ public class SocioAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	/*public String nuevoSocio(){
-		try{
-			listaPlanesDTO = planService.getAllPlanes();
-			listaPlanesID = new ArrayList<Integer>();
-			for(PlanDTO planDTO :listaPlanesDTO){
-				listaPlanesID.add(planDTO.getId());
-			}
-		} catch (ServiceException e){
-		
-			return ERROR;
-		}
-		return SUCCESS;
-	}*/
-
 	public String addSocio() {
 		try{
 			socioService.add(this.getSocioServiceDTO());
@@ -135,11 +181,11 @@ public class SocioAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}
-
 	
 	public String deleteSocio(){
 		try{
-			socioService.removeById(Integer.parseInt(idSocio));
+			int borrarId = Integer.parseInt(idSocio);
+			socioService.removeById(borrarId);
 		} catch (ServiceException e){
 		
 			return ERROR;
@@ -147,21 +193,25 @@ public class SocioAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-//	public String updateSocio(){
-//		try{
-//			planDTO = planService.getByIdPlan(planId);
-//			socioDTO.setPlanDTO(planDTO);
-//			socioService.updateSocio(this.getSocioDTO());
-//		} catch (ServiceException e){
-//		
-//			return ERROR;
-//		}
-//		return SUCCESS;
-//	}
+	public String updateSocio(){
+		try{
+     		PlanDTO plan = planService.getByIdPlan(planDTO.getId());
+			socioDTO.setPlanDTO(plan);
+			socioService.updateSocio(socioDTO);
+		} catch (ServiceException e){
+		
+			return ERROR;
+		}
+		return SUCCESS;
+	}
 
 	public String listSocios(){
 		try{
-			listaSociosDTO = socioService.getAll();
+			listaSociosDTO = socioService.buscarSocios(nombreB, apellidoB, dniB, 0);
+			if(listaSociosDTO == null){
+				listaSociosDTO = new ArrayList<SocioDTO>();
+			}
+			this.setCompleter();
 		} catch (ServiceException e){
 		
 			return ERROR;
@@ -171,6 +221,7 @@ public class SocioAction extends ActionSupport {
 
 	public String obtenerSocio(){
 		try{
+			listaPlanesDTO = planService.getAllPlanes();
 			socioDTO = socioService.getById(Integer.parseInt(idSocio));
 		} catch (ServiceException e){
 		
@@ -179,11 +230,22 @@ public class SocioAction extends ActionSupport {
 		return SUCCESS;
 	}
 
-	public int getPlanId() {
-		return planId;
+	//metodo que se usa a travez del dispplay tag para evitar volver a llamar al backend
+	public String displayTagRefresh() {
+		return SUCCESS;
 	}
-
-	public void setPlanId(int planId) {
-		this.planId = planId;
+	
+	private void setCompleter(){
+		listaNombres = new ArrayList<String>();
+		listaApellidos = new ArrayList<String>();
+		listaDNI = new ArrayList<String>();
+		for(SocioDTO socioDTO :listaSociosDTO){
+			listaNombres.add(socioDTO.getNombre());
+			listaApellidos.add(socioDTO.getApellido());
+			listaDNI.add(socioDTO.getDni());
+		}
 	}
+	
+	
+	
 }

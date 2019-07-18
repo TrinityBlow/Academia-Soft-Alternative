@@ -88,9 +88,9 @@ public class SocioServiceImpl implements SocioService {
 		}
 		
 	}
-
+	
 	@Override
-	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB, int dniB, int nroAfiB) throws ServiceException {
+	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB, String dniB, int nroAfiB) throws ServiceException {
 		try{
 			List<SocioDTO> sociosBusqueda = socioBO.buscarSocios(nombreB, apellidoB, dniB, nroAfiB);
 			return sociosBusqueda;

@@ -111,6 +111,10 @@ public class SocioDTO {
 		return serialVersionUID;
 	}
 	
+	public String toString() {
+		return nombre + " " + apellido +" - " + dni;
+	}
+	
 	
 	
 	

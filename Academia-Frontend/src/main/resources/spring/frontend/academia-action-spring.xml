@@ -16,6 +16,10 @@
 		<property name="planService" ref="plan.service" />
 	</bean>
 	
+	<bean id="socio.turnos.action" class="ar.com.softtek.academia.web.action.SocioTurnosAction">
+		<property name="socioService" ref="socio.service" />
+	</bean>	
+	
 	<bean id="turno.action" class="ar.com.softtek.academia.web.action.TurnoAction">
 		<property name="turnoService" ref="turno.service" />
 		<property name="practicaService" ref="practica.service" />

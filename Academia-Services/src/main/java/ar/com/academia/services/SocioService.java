@@ -62,21 +62,15 @@ public interface SocioService {
 			@WebParam(name = "socioActualizar")
 			SocioDTO actualizar
 			) throws ServiceException;
-	
 
-	@WebMethod(operationName = "BuscarSocios")
-	@WebResult(name = "BuscarSociosResult")
 	public List<SocioDTO> buscarSocios(
 			@WebParam(name = "nombreSocio")
 			String nombreB, 
 			@WebParam(name = "apellidoSocio")
 			String apellidoB, 
 			@WebParam(name = "dniSocio")
-			int dniB, 
+			String dniB, 
 			@WebParam(name = "numeroAfiliado")
 			int nroAfiB
 			) throws ServiceException;
-
-	
-	
 }

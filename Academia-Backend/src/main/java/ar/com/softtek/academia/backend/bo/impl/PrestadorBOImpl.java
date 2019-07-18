@@ -57,10 +57,38 @@ public class PrestadorBOImpl implements PrestadorBO {
 			throw new BusinessException();
 		}
 	}
+	
 
 	public void actualizarPrestador(PrestadorDTO entidad) throws BusinessException {
+
 		try{
-			prestadorDAO.updatePrestador(entidad);
+			Prestador prestador = new Prestador();
+			Set<Horario> horarios = new HashSet<Horario>();
+			Horario horario;
+			Practica practica;
+			Set<Practica> practicas = new HashSet<Practica>();
+			
+			
+			for(HorarioDTO horarioDTO  :entidad.getHorasDTO()){
+				horario = horarioDAO.getById(horarioDTO.getId());
+				horarios.add(horario);
+			}
+			
+			for(PracticaDTO practicaDTO  :entidad.getPracticasDTO()){
+				practica = practicaDAO.getById(practicaDTO.getId());
+				practicas.add(practica);
+			}
+			
+		    prestador = prestadorDAO.getById(entidad.getId());
+			
+			prestador.setApellido(entidad.getApellido());
+			prestador.setEmail(entidad.getEmail());
+			prestador.setId(entidad.getId());
+			prestador.setNombre(entidad.getNombre());
+			prestador.setTelefono(entidad.getTelefono());
+			prestador.setHoras(horarios);
+			prestador.setPracticas(practicas);
+			prestadorDAO.update(prestador);
 		} catch (PersistenceException  e){
 			throw new BusinessException();
 		}
@@ -93,7 +121,9 @@ public class PrestadorBOImpl implements PrestadorBO {
 			prestador.setHoras(horarios);
 			prestador.setPracticas(practicas);
 			
+			
 			PrestadorDTO prestadorDTOAgregado = prestadorDAO.savePrestador(prestador);
+			
 			return prestadorDTOAgregado;
 		} catch (PersistenceException  e){
 			throw new BusinessException();

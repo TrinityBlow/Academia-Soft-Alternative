@@ -24,6 +24,7 @@
              1) class is set to 'editEmployeeAction' which is bean defined by Spring context
              2) We have given the method to be called here as well;
         -->
+       
         
 	   <action name="LoginClass" class="com.struts2.LoginCheckingClass" method="execute">
 	     <result name="success">/LoginSuccessPage.jsp</result>
@@ -72,11 +73,21 @@
 		<action name="nuevoSocio"  class="socio.action" method="nuevoSocio">
         	<result name="success" >/socio/nuevo.jsp</result>
 		</action>
+				
+		<action name="listSociosRefresh"  class="socio.action" method="displayTagRefresh">
+        	<result name="success">/socio/listarSocios.jsp</result>
+		</action>
 		
 		<action name="deletePrestador"  class="prestador.action" method="deletePrestador">
-
         	<result name="success" type="redirect">listPrestadores</result>
-
+		</action>
+		
+		<action name="listSociosTurnosRefresh"  class="socio.turnos.action" method="displayTagRefresh">
+        	<result name="success">/socio/listarTurnosSocio.jsp</result>
+		</action>
+		
+		<action name="listarTurnosSocio"  class="socio.turnos.action" method="listarTurnosSocio">
+        	<result name="success" >/socio/listarTurnosSocio.jsp</result>
 		</action>
 		
 		<action name="getPrestador"  class="prestador.action" method="obtenerPrestador">
@@ -96,7 +107,7 @@
         <action name="updatePrestador"  class="prestador.action" method="updatePrestador">
 
 
-        	<result name="success" type="redirect">listTurnos</result>
+        	<result name="success" type="redirect">listPrestadores</result>
 
 		</action>
 		
@@ -140,10 +151,7 @@
 		<action name="listTurnosRefresh"  class="turno.action" method="displayTagRefresh">
         	<result name="success">/turno/listarTurnos.jsp</result>
 		</action>
-		
-		<action name="searchNombreSocio"  class="turno.action" method="searchNombreSocio">
-        	<result name="success">/turno/listarTurnos.jsp</result>
-		</action>
+	
 		
 		
 		
@@ -188,5 +196,10 @@
 		</action>
 		
 	</package>
+	
+<!-- 	validacion -->
+<!-- 	<plug-in className="org.apache.struts.validator.ValidatorPlugIn"> -->
+<!-- 		<set-property property="pathnames" value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/> -->
+<!-- 	</plug-in> -->
      
 </struts>

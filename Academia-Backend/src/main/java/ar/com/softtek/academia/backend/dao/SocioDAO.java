@@ -11,10 +11,10 @@ public interface SocioDAO extends GenericDAO<Socio> {
 
 	public List<SocioDTO> getAllSocios() throws PersistenceException;
 	public List<SocioDTO> getAllBySexo(String sexo) throws PersistenceException;
-	public List<SocioDTO> buscarSocios(String nombreB,String apellidoB, int dniB,int nroAfiB) throws PersistenceException;
+	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB, String dniB, int nroAfiB) throws PersistenceException;
 	
 	public SocioDTO getByIdSocio(int id) throws PersistenceException;
-	public SocioDTO saveSocio(SocioDTO entidad) throws PersistenceException;
+	public SocioDTO saveSocio(Socio entidad) throws PersistenceException;
 	
 	public void updateSocio(SocioDTO entidad) throws PersistenceException;
 	

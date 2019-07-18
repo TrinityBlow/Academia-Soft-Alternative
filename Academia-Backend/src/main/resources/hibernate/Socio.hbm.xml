@@ -22,15 +22,15 @@
 		<property name="email" column="EMAIL" />
 		<property name="password" column="PASSWORD" />
 		
-		<list name="turnos" cascade="all" lazy="false">
+		<bag name="turnos" lazy="false" cascade="all-delete-orphan">
 		   <key>
 		        <column name="ID_SOCIO"></column>
 		   </key>
-		   <list-index>
-		        <column name="ID_TURNO"></column>
-		   </list-index>
+<!-- 		   <list-index> -->
+<!-- 		        <column name="ID_TURNO"></column> -->
+<!-- 		   </list-index> -->
 		   <one-to-many class="ar.com.academia.entities.Turno"></one-to-many>
-		</list>
+		</bag>
 		
 		
  		<many-to-one name="plan" lazy="false">  

@@ -53,11 +53,13 @@ $(function() {
 		var prestador;
 		for(var i = 0; i < listResponse.length; i++) {
 		    prestador = listResponse[i];
-			options += '<option value="';
-			options += prestador.id;
-			options += '">';
-			options += prestador.nombre;
-			options += '</option><br>';
+			options += '<option value="'
+					+ prestador.id
+					+ '">'
+					+ prestador.nombre
+					+ ' '
+					+ prestador.apellido
+					+ '</option><br>';
 		}
 		return options;
 	}
@@ -66,7 +68,6 @@ $(function() {
 	pruebaTest();
 	
 });
-
 
 
 

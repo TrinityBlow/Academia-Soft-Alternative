@@ -15,14 +15,14 @@
 	<h2 id="titulo"> Modificar de Socio </h2>
 	<s:form id="target" action="/updateSocio" name="target" method="post">
 <%-- 	    <s:select label="Plan" name="socio.plan.descripcion" list="#{ '2 221': '2 221', '2 222': '2 222'}"></s:select> --%>
-	    <s:radio label="Sexo" name="socioDTO.sexo" list="#{ 'Masculino': 'masculino', 'Femenino': 'femenino'}"></s:radio>
-	    <s:select label="Estado Civil:" name="socioDTO.estadoCivil" list="#{ 'Soltero': 'soltero', 'Casado': 'casado'}" onchange="formularioCambiar()"></s:select>
+	    <s:radio label="Sexo" name="socioDTO.sexo" list="#{ 'Masculino': 'masculino', 'Femenino': 'femenino'}" required="required"/>
+	    <s:select label="Estado Civil:" name="socioDTO.estadoCivil" list="#{ 'Soltero': 'soltero', 'Casado': 'casado'}" onchange="formularioCambiar()" required="required"/>
 	    <div id="casados" >
-		    <s:textfield label="Nombre y Apellido de Paraje:" type="text" name="socioDTO.nombreConyuge" ></s:textfield>
-		    <s:textfield label="Cantidad Hijos:" type="number" name="socioDTO.cantidadHijos" ></s:textfield>
+		    <s:textfield label="Nombre y Apellido de Paraje:" type="text" name="socioDTO.nombreConyuge" required="required"/>
+		    <s:textfield label="Cantidad Hijos:" type="number" name="socioDTO.cantidadHijos" required="required"/>
 	    </div>
-	    <s:textfield label="Telefono:" type="number" name="socioDTO.telefono" ></s:textfield>
-	    <s:textfield label="Direccion:" type="text" name="socioDTO.direccion" ></s:textfield>
+	    <s:textfield label="Telefono:" type="number" name="socioDTO.telefono" required="required"/>
+	    <s:textfield label="Direccion:" type="text" name="socioDTO.direccion" required="required"/>
 	    <br><br>
 	    <s:submit label="Registrar Socio"></s:submit>
 	</s:form> 

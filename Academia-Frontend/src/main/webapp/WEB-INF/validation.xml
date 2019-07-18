@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validator>
+
+	<field name="SocioDTO.numeroSocio">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>El numero de socio no puede estar vacio</message>
+		</field-validator>
+	</field>
+
+	<field name="SocioDTO.nombre">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>El nombre no puede estar vacio</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.apellido">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>El apellido no puede estar vacio</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.sexo">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe seleccionar su sexo</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.estadoCivil">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe seleccionar su estado civil</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.nombreConyuge">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>El nombre de su pareja no puede estar vacio</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.cantidadHijos">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe introducir la cantidad de hijos que tiene</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.dni">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe introducir su DNI</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.telefono">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe introducir su nro de telefono</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.direccion">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe introducir su direccion</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.clave">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe introducir una contraseña</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.email">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe introducir un email</message>  
+		</field-validator>
+	</field>
+	
+	<field name="SocioDTO.planDTO">
+		<field-validator type="requiredstring">
+			<param name="">true</param>
+			<message>Debe seleccionar un plan</message>  
+		</field-validator>
+	</field>
+	
+</validator>

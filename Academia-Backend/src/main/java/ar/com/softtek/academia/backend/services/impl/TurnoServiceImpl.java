@@ -10,12 +10,9 @@ import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.ServiceException;
 import ar.com.academia.services.TurnoService;
 import ar.com.softtek.academia.backend.bo.TurnoBO;
-import org.apache.log4j.Logger;
 
 @WebService(endpointInterface = "ar.com.academia.services.TurnoService", serviceName = "TurnoService")
 public class TurnoServiceImpl implements TurnoService {
-
-	private static final Logger logger = Logger.getLogger(TurnoServiceImpl.class);
 	
 	private TurnoBO turnoBO;
 	
@@ -39,9 +36,6 @@ public class TurnoServiceImpl implements TurnoService {
 
 	public List<TurnoDTO> getAllTurnos() throws ServiceException {
 		try{
-			if(logger.isDebugEnabled()){
-				logger.debug("getAllTurnos is executed!");
-			}
 			List<TurnoDTO> turno = turnoBO.getAllTurnos();
 			return turno;
 		} catch (BusinessException c){

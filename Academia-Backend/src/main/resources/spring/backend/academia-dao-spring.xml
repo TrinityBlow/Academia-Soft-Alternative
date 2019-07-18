@@ -13,6 +13,8 @@
 
 	<bean id="socioDAO" class="ar.com.softtek.academia.backend.dao.impl.SocioDAOImpl">
 		<property name="sessionFactory" ref="spring.hibernate.session.factory"/>
+		<property name="planDAO" ref="plan.dao"/>		
+		<property name="turnoDAO" ref="turno.dao"/>		
 	</bean>
 
 	<bean id="prestadorDAO" class="ar.com.softtek.academia.backend.dao.impl.PrestadorDAOImpl">

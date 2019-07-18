@@ -10,8 +10,7 @@ import ar.com.softtek.academia.backend.dao.SocioDAO;
 public interface SocioBO {
 
 	public List<SocioDTO> getAllSocios() throws BusinessException;
-	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB, int dniB, int nroAfiB) throws BusinessException;
-	
+	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB, String dniB, int nroAfiB) throws BusinessException;
 	public SocioDTO getSocioById(int id) throws BusinessException;
 	public void actualizarSocio(SocioDTO entidad) throws BusinessException;
 	public SocioDTO crearSocio(SocioServiceDTO entidad) throws BusinessException;

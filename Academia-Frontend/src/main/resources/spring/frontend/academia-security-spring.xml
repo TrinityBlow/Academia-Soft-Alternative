@@ -9,8 +9,8 @@
     http://www.springframework.org/schema/security/spring-security-3.2.xsd">
   
     <http auto-config="true">
-        <intercept-url pattern="/index.jsp" access="ROLE_ADMIN" />
-        <intercept-url pattern="/user" access="ROLE_USER" />
+        <intercept-url pattern="/login.jsp" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+        <intercept-url pattern="/ **" access="ROLE_ADMIN" />
          
         <access-denied-handler error-page="/403.jsp" />
          

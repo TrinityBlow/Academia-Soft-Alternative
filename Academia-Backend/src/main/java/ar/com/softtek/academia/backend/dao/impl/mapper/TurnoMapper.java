@@ -70,31 +70,64 @@ public class TurnoMapper {
 		return turnoEntity;
 	}
 	
+
 	
-	public static List<TurnoDTO> mapListTurnoToDTO(Collection<Turno> turnos){
-		Turno turno;
-		TurnoDTO turnoDTOAgregar;
+	public static List<TurnoDTO> mapListTurnoToDTO(List<Turno> turnos){
 		List<TurnoDTO> turnosDTO = new ArrayList<TurnoDTO>();
-		Iterator<Turno> it = turnos.iterator();
-		while(it.hasNext()){
-			turno = it.next();
-			turnoDTOAgregar = TurnoMapper.mapTurnoToDTO(turno);
-			turnosDTO.add(turnoDTOAgregar);
+		if(turnos != null){
+			Turno turno;
+			TurnoDTO turnoDTOAgregar;
+			Iterator<Turno> it = turnos.iterator();
+			while(it.hasNext()){
+				turno = it.next();
+				if(turno != null){
+					turnoDTOAgregar = TurnoMapper.mapTurnoToDTO(turno);
+					turnosDTO.add(turnoDTOAgregar);
+				}
+			}
 		}
 		return turnosDTO;
 	}
 	
 	public static List<Turno> mapListDTOToTurno(Collection<TurnoDTO> turnosDTO){
-		TurnoDTO turnoDTO;
-		Turno turnoAgregar;
 		List<Turno> turnos = new ArrayList<Turno>();
-		Iterator<TurnoDTO> it = turnosDTO.iterator();
-		while(it.hasNext()){
-			turnoDTO = it.next();
-			turnoAgregar = TurnoMapper.mapDTOToTurno(turnoDTO);
-			turnos.add(turnoAgregar);
+		if(turnosDTO != null){
+			TurnoDTO turnoDTO;
+			Turno turnoAgregar;
+			Iterator<TurnoDTO> it = turnosDTO.iterator();
+			while(it.hasNext()){
+				turnoDTO = it.next();
+				turnoAgregar = TurnoMapper.mapDTOToTurno(turnoDTO);
+				turnos.add(turnoAgregar);
+			}	
 		}
 		return turnos;
+	}
+	
+	public static TurnoDTO mapTurnoToDTOSimple(Turno turnoToMap){
+		TurnoDTO turnoDTO = null;
+		if(turnoToMap != null) {
+			turnoDTO = new TurnoDTO();
+			turnoDTO.setId(turnoToMap.getId());
+			turnoDTO.setImporteDelTurno(turnoToMap.getImporteDelTurno());
+			turnoDTO.setObservaciones(turnoToMap.getObservaciones());
+		}		
+		return turnoDTO;
+	}
+	
+	public static List<TurnoDTO> mapListTurnoToDTOSimple(Collection<Turno> turnos){
+		List<TurnoDTO> turnosDTO = new ArrayList<TurnoDTO>();
+		if(turnos != null){
+			Turno turno;
+			TurnoDTO turnoDTOAgregar;
+			Iterator<Turno> it = turnos.iterator();
+			while(it.hasNext()){
+				turno = it.next();
+				turnoDTOAgregar = TurnoMapper.mapTurnoToDTOSimple(turno);
+				turnosDTO.add(turnoDTOAgregar);
+			}
+		}
+		return turnosDTO;
 	}
 	
 }

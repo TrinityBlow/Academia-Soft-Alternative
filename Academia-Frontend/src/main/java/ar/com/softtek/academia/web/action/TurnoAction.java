@@ -28,17 +28,20 @@ public class TurnoAction extends ActionSupport{
 	private List<PracticaDTO> listaPracticasDTO;
 	private List<SocioDTO> listaSociosDTO;
 	private List<String> listaTurnosNombre;
+	
+	
+	private TurnoServiceDTO turnoServiceDTO;
 
-	private List<String> languages;
-	
-	
-	
-	public List<String> getLanguages() {
-		return languages;
+	private String nombreS;
+
+
+
+	public String getNombreS() {
+		return nombreS;
 	}
 
-	public void setLanguages(List<String> languages) {
-		this.languages = languages;
+	public void setNombreS(String nombreS) {
+		this.nombreS = nombreS;
 	}
 
 	public List<String> getListaTurnosNombre() {
@@ -50,9 +53,6 @@ public class TurnoAction extends ActionSupport{
 	}
 
 	private String fechaSelect;
-	
-	private TurnoServiceDTO turnoServiceDTO;
-	
 	
 	
 	
@@ -160,17 +160,9 @@ public class TurnoAction extends ActionSupport{
 
 	public String listTurnos(){
 		try{
-			languages = new ArrayList<String>();
-			languages.add("a");
-			languages.add("asd");
-			languages.add("acx");
-			languages.add("d");
-			languages.add("dewr");
-			languages.add("ter");
 			listaTurnosDTO = turnoService.getAllTurnos();
-			listaTurnosNombre = new ArrayList<String>();
-			for(TurnoDTO turno : listaTurnosDTO) {
-				listaTurnosNombre.add(turno.getSocioDTO().getNombre());
+			if(listaTurnosDTO == null){
+				listaTurnosDTO = new ArrayList<TurnoDTO>();
 			}
 		} catch (ServiceException e){
 		
@@ -189,6 +181,8 @@ public class TurnoAction extends ActionSupport{
 //		}
 		return SUCCESS;
 	}
+	
+
 	
 	public String nuevoTurno(){
 		try{

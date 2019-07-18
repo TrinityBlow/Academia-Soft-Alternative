@@ -2,64 +2,76 @@ package ar.com.softtek.academia.backend.bo.impl;
 
 import java.util.List;
 
-import ar.com.academia.dto.HorarioDTO;
-import ar.com.academia.dto.PracticaDTO;
-import ar.com.academia.dto.PrestadorDTO;
-import ar.com.academia.dto.ReservaDTO;
-import ar.com.academia.dto.SocioDTO;
 import ar.com.academia.dto.TurnoDTO;
 import ar.com.academia.dto.service.TurnoServiceDTO;
+import ar.com.academia.entities.Horario;
+import ar.com.academia.entities.Practica;
+import ar.com.academia.entities.Prestador;
+import ar.com.academia.entities.Reserva;
+import ar.com.academia.entities.Socio;
+import ar.com.academia.entities.Turno;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.PersistenceException;
-import ar.com.softtek.academia.backend.bo.HorarioBO;
-import ar.com.softtek.academia.backend.bo.PracticaBO;
-import ar.com.softtek.academia.backend.bo.PrestadorBO;
 import ar.com.softtek.academia.backend.bo.ReservaBO;
-import ar.com.softtek.academia.backend.bo.SocioBO;
 import ar.com.softtek.academia.backend.bo.TurnoBO;
+import ar.com.softtek.academia.backend.dao.HorarioDAO;
+import ar.com.softtek.academia.backend.dao.PracticaDAO;
+import ar.com.softtek.academia.backend.dao.PrestadorDAO;
+import ar.com.softtek.academia.backend.dao.ReservaDAO;
+import ar.com.softtek.academia.backend.dao.SocioDAO;
 import ar.com.softtek.academia.backend.dao.TurnoDAO;
 
 public class TurnoBOImpl implements TurnoBO{
 	
 	private TurnoDAO turnoDAO;
 	private ReservaBO reservaBO;
-	private HorarioBO horarioBO;
-	private PrestadorBO prestadorBO;
-	private PracticaBO practicaBO;
-	private SocioBO socioBO;
+	private ReservaDAO reservaDAO;
+	private HorarioDAO horarioDAO;
+	private PrestadorDAO prestadorDAO;
+	private PracticaDAO practicaDAO;
+	private SocioDAO socioDAO;
 	
 
 	
-	public SocioBO getSocioBO() {
-		return socioBO;
+
+	public ReservaDAO getReservaDAO() {
+		return reservaDAO;
 	}
 
-	public void setSocioBO(SocioBO socioBO) {
-		this.socioBO = socioBO;
+	public void setReservaDAO(ReservaDAO reservaDAO) {
+		this.reservaDAO = reservaDAO;
 	}
 
-	public HorarioBO getHorarioBO() {
-		return horarioBO;
+	public HorarioDAO getHorarioDAO() {
+		return horarioDAO;
 	}
 
-	public void setHorarioBO(HorarioBO horarioBO) {
-		this.horarioBO = horarioBO;
+	public void setHorarioDAO(HorarioDAO horarioDAO) {
+		this.horarioDAO = horarioDAO;
 	}
 
-	public PrestadorBO getPrestadorBO() {
-		return prestadorBO;
+	public PrestadorDAO getPrestadorDAO() {
+		return prestadorDAO;
 	}
 
-	public void setPrestadorBO(PrestadorBO prestadorBO) {
-		this.prestadorBO = prestadorBO;
+	public void setPrestadorDAO(PrestadorDAO prestadorDAO) {
+		this.prestadorDAO = prestadorDAO;
 	}
 
-	public PracticaBO getPracticaBO() {
-		return practicaBO;
+	public PracticaDAO getPracticaDAO() {
+		return practicaDAO;
 	}
 
-	public void setPracticaBO(PracticaBO practicaBO) {
-		this.practicaBO = practicaBO;
+	public void setPracticaDAO(PracticaDAO practicaDAO) {
+		this.practicaDAO = practicaDAO;
+	}
+
+	public SocioDAO getSocioDAO() {
+		return socioDAO;
+	}
+
+	public void setSocioDAO(SocioDAO socioDAO) {
+		this.socioDAO = socioDAO;
 	}
 
 	public ReservaBO getReservaBO() {
@@ -93,25 +105,27 @@ public class TurnoBOImpl implements TurnoBO{
 
 	public TurnoDTO crearTurno(TurnoServiceDTO entidad) throws BusinessException {
 		try{
-			ReservaDTO reservaDTO = new ReservaDTO();
-			TurnoDTO turnoDTOAgregar = new TurnoDTO();
+			Reserva reserva = new Reserva();
+			Turno turnoAgregar = new Turno();
 			
-			SocioDTO socioDTO = socioBO.getSocioById(entidad.getSocioId());
-			PracticaDTO practicaDTO = practicaBO.getPracticaById(entidad.getPracticaId());
-			PrestadorDTO prestadorDTO = prestadorBO.getPrestadorById(entidad.getPrestadorId());
-			HorarioDTO horarioDTO = horarioBO.getHorarioById(entidad.getHorarioId());
+			Socio socio = socioDAO.getById(entidad.getSocioId());
+			Practica practica = practicaDAO.getById(entidad.getPracticaId());
+			Prestador prestador = prestadorDAO.getById(entidad.getPrestadorId());
+			Horario horario = horarioDAO.getById(entidad.getHorarioId());
 			
-			reservaDTO.setFecha(entidad.getFecha());
-			reservaDTO.setHorarioDTO(horarioDTO);
+			reserva.setFecha(entidad.getFecha());
+			reserva.setHorario(horario);
 			
-			turnoDTOAgregar.setImporteDelTurno(entidad.getImporte());
-			turnoDTOAgregar.setObservaciones(entidad.getObservaciones());
-			turnoDTOAgregar.setSocioDTO(socioDTO);
-			turnoDTOAgregar.setPracticaDTO(practicaDTO);
-			turnoDTOAgregar.setPrestadorDTO(prestadorDTO);
-			turnoDTOAgregar.setReservaDTO(reservaDTO);
+			turnoAgregar.setImporteDelTurno(entidad.getImporte());
+			turnoAgregar.setObservaciones(entidad.getObservaciones());
+			
+			turnoAgregar.setSocio(socio);
+			turnoAgregar.setPractica(practica);
+			turnoAgregar.setPrestador(prestador);
+			turnoAgregar.setReserva(reserva);
+			reserva.setTurno(turnoAgregar);
 
-			TurnoDTO turnoDTOAgregado = turnoDAO.saveTurno(turnoDTOAgregar);
+			TurnoDTO turnoDTOAgregado = turnoDAO.saveTurno(turnoAgregar);
 			return turnoDTOAgregado;
 		} catch (PersistenceException  e){
 			throw new BusinessException();

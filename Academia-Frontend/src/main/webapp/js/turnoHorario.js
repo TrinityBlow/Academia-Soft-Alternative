@@ -30,11 +30,13 @@ $(function() {
 		var horario;
 		for(var i = 0; i < listResponse.length; i++) {
 			horario = listResponse[i];
-			options += '<option value="';
-			options += horario.id;
-			options += '">';
-			options += (horario.horaInicio + ' a '+ horario.horarioFin);
-			options += '</option><br>';
+			options += '<option value="'
+					+ horario.id
+					+ '">'
+					+ horario.horaInicio 
+					+ ' a '
+					+ horario.horaFin
+					+ '</option><br>';
 		}
 		return options;
 	}

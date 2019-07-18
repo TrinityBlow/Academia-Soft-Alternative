@@ -12,7 +12,7 @@ public interface TurnoDAO extends GenericDAO<Turno> {
 	public List<TurnoDTO> getAllTurnos() throws PersistenceException;
 	
 	public TurnoDTO getByIdTurno(int id) throws PersistenceException;
-	public TurnoDTO saveTurno(TurnoDTO entidad) throws PersistenceException;
+	public TurnoDTO saveTurno(Turno entidad) throws PersistenceException;
 	
 	public void updateTurno(TurnoDTO entidad) throws PersistenceException;
 	
@@ -20,4 +20,5 @@ public interface TurnoDAO extends GenericDAO<Turno> {
 	public boolean deleteTurno(int id) throws PersistenceException;
 
 	public int countTurnos() throws PersistenceException;
+
 }

@@ -5,8 +5,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+
 
 import ar.com.academia.dto.TurnoDTO;
+import ar.com.academia.entities.Practica;
 import ar.com.academia.entities.Turno;
 import ar.com.academia.entities.exception.PersistenceException;
 import ar.com.softtek.academia.backend.dao.TurnoDAO;
@@ -56,12 +62,11 @@ public class TurnoDAOImpl extends GenericDAOImpl<Turno> implements TurnoDAO {
 	}
 
 	@Override
-	public TurnoDTO saveTurno(TurnoDTO entidad) throws PersistenceException {
+	public TurnoDTO saveTurno(Turno entidad) throws PersistenceException {
 		try{
 			TurnoDTO turnoDTOAgregado;
-			Turno turnoAgregar = TurnoMapper.mapDTOToTurno(entidad);
-			this.save(turnoAgregar);
-			turnoDTOAgregado = TurnoMapper.mapTurnoToDTO(turnoAgregar);
+			this.save(entidad);
+			turnoDTOAgregado = TurnoMapper.mapTurnoToDTO(entidad);
 			return turnoDTOAgregado;
 		} catch (PersistenceException e){
 			throw new PersistenceException();

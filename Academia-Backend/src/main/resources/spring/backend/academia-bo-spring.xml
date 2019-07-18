@@ -13,7 +13,7 @@
 	
 	<bean id="socio.bo" class="ar.com.softtek.academia.backend.bo.impl.SocioBOImpl">
 		<property ref="socioDAO" name="socioDAO"/>
-		<property ref="plan.bo" name="planBO"/>
+		<property ref="plan.dao" name="planDAO"/>
 	</bean>
 	
 	<bean id="prestador.bo" class="ar.com.softtek.academia.backend.bo.impl.PrestadorBOImpl">
@@ -25,10 +25,11 @@
 	<bean id="turno.bo" class="ar.com.softtek.academia.backend.bo.impl.TurnoBOImpl">
 		<property ref="turno.dao" name="turnoDAO"/>
 		<property ref="reserva.bo" name="reservaBO"/>
-		<property ref="horario.bo" name="horarioBO"/>
-		<property ref="practica.bo" name="practicaBO"/>
-		<property ref="prestador.bo" name="prestadorBO"/>
-		<property ref="socio.bo" name="socioBO"/>
+		<property ref="reserva.dao" name="reservaDAO"/>
+		<property ref="horario.dao" name="horarioDAO"/>
+		<property ref="practica.dao" name="practicaDAO"/>
+		<property ref="prestadorDAO" name="prestadorDAO"/>
+		<property ref="socioDAO" name="socioDAO"/>
 	</bean>
 	
 	<bean id="horario.bo" class="ar.com.softtek.academia.backend.bo.impl.HorarioBOImpl">

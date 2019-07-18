@@ -53,8 +53,8 @@ public class SocioMapper {
 			
 			socioDTO.setPlanDTO(PlanMapper.mapPlanToDTO(socioToMap.getPlan()));
 	
-	//		List<TurnoDTO> turnosDTO = TurnoMapper.mapListTurnoToDTO(socioToMap.getTurnos());
-	//		socioDTO.setTurnosDTO(turnosDTO);
+			List<TurnoDTO> turnosDTO = TurnoMapper.mapListTurnoToDTO(socioToMap.getTurnos());
+			socioDTO.setTurnosDTO(turnosDTO);
 		}
 		
 		return socioDTO;
@@ -80,8 +80,8 @@ public class SocioMapper {
 			
 			socioEntity.setPlan(PlanMapper.mapDTOToPlan(socioToMap.getPlanDTO()));
 	
-	//		List<Turno> turnosDTO = TurnoMapper.mapListDTOToTurno(socioToMap.getTurnosDTO());
-	//		socioEntity.setTurnos(turnosDTO);
+			List<Turno> turnosDTO = TurnoMapper.mapListDTOToTurno(socioToMap.getTurnosDTO());
+			socioEntity.setTurnos(turnosDTO);
 		}
 		
 		return socioEntity;
@@ -105,8 +105,8 @@ public class SocioMapper {
 			socioEntity.setPassword(socioToMap.getPassword());
 			
 	
-	//		List<Turno> turnosDTO = TurnoMapper.mapListDTOToTurno(socioToMap.getTurnosDTO());
-	//		socioEntity.setTurnos(turnosDTO);
+//			List<Turno> turnosDTO = TurnoMapper.mapListDTOToTurno(socioToMap.getTurnosDTO());
+//			socioEntity.setTurnos(turnosDTO);
 		}
 		
 		return socioEntity;

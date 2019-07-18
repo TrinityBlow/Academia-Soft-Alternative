@@ -31,7 +31,7 @@ public interface PrestadorService {
     
 	@WebMethod(operationName="removeByIdPrestador")
 	@WebResult(name="id")
-	boolean removeById(int id) throws ServiceException;
+	boolean removeById(@WebParam(name = "idPrestador")int id) throws ServiceException;
 	
 
 	@WebMethod(operationName = "CountAllPrestadores")

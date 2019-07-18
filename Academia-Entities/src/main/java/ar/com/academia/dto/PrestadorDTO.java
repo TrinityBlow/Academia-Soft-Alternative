@@ -1,5 +1,6 @@
 package ar.com.academia.dto;
 
+import java.util.Iterator;
 import java.util.List;
 public class PrestadorDTO {
 	private int id;
@@ -61,6 +62,37 @@ public class PrestadorDTO {
 		this.practicasDTO = practicasDTO;
 	}
 	
+	public String getCodigosPracticas(){
+		String codigosString = "" ;
+		Iterator<PracticaDTO> it = this.getPracticasDTO().iterator();
+		PracticaDTO prac;
+		while(it.hasNext()){
+			prac = it.next();
+			codigosString = codigosString.concat(prac.getCodigo()); 
+			if(it.hasNext()){
+				codigosString = codigosString.concat(" | ");
+			} 
+		}
+		
+		return codigosString;
+	}
+	
+	public String getHoras(){
+		String codigosString = "" ;
+		String horaInicio = "" ;
+		Iterator<HorarioDTO> it = this.getHorasDTO().iterator();
+		HorarioDTO hora;
+		while(it.hasNext()){
+			hora = it.next();
+			horaInicio=hora.getHoraInicio();
+			codigosString = codigosString.concat(horaInicio.concat("/"+hora.getHoraFin())); 
+			if(it.hasNext()){
+				codigosString = codigosString.concat(" | ");
+			} 
+		}
+		
+		return codigosString;
+	}
 	
 	
 }

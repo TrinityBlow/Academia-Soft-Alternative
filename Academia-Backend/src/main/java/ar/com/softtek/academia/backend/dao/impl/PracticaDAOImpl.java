@@ -11,12 +11,15 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 
+import ar.com.academia.dto.PlanDTO;
 import ar.com.academia.dto.PracticaDTO;
 import ar.com.academia.dto.PrestadorDTO;
+import ar.com.academia.entities.Plan;
 import ar.com.academia.entities.Practica;
 import ar.com.academia.entities.Prestador;
 import ar.com.academia.entities.exception.PersistenceException;
 import ar.com.softtek.academia.backend.dao.PracticaDAO;
+import ar.com.softtek.academia.backend.dao.impl.mapper.PlanMapper;
 import ar.com.softtek.academia.backend.dao.impl.mapper.PracticaMapper;
 import ar.com.softtek.academia.backend.dao.impl.mapper.PrestadorMapper;
 

@@ -16,6 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 /**
  * Servlet implementation class SocioAction
  */
+/*add prestador esta comentado, no hace nada*/
 public class PrestadorAction extends ActionSupport {
 
 	private PrestadorService prestadorService;
@@ -91,7 +92,6 @@ public class PrestadorAction extends ActionSupport {
 	public String addPrestador() {
 		try{
 			prestadorService.add(prestadorServiceDTO);
-			
 		} catch (ServiceException e){
 		
 			return ERROR;
@@ -109,8 +109,6 @@ public class PrestadorAction extends ActionSupport {
 	}
 
 	public String nuevoPrestador(){
-		
-	
 		try {
 			practicasElegidosId = new ArrayList<Integer>();
 			this.setPracticas(practicaService.getAllPracticas());
@@ -156,12 +154,39 @@ public class PrestadorAction extends ActionSupport {
 
 	public String obtenerPrestador(){
 		try{
+			prestadorServiceDTO = new PrestadorServiceDTO();
+			
 			prestadorDTO = prestadorService.getById(Integer.parseInt(idPrestador));
+			this.setPracticas(practicaService.getAllPracticas());
+			this.setHorarios(horarioService.getAllHorarios());
+			
+			prestadorServiceDTO.setHorarios(new ArrayList<Integer>());
+			for(HorarioDTO horarioDTO :horarios){
+				if(prestadorDTO.getHorasDTO().contains(horarioDTO)){
+					prestadorServiceDTO.getHorarios().add(horarioDTO.getId());
+				}
+			}
+			
 		} catch (ServiceException e){
 		
 			return ERROR;
 		}
 		return SUCCESS;
+	}
+	
+	public List<Integer> getCheckHorarios(){
+		List<Integer> checkId = new ArrayList<Integer>();
+		for(HorarioDTO horarioDTO :prestadorDTO.getHorasDTO()){
+			checkId.add(horarioDTO.getId());
+		}
+		return checkId;
+	}
+	public List<Integer> getCheckPracticas(){
+		List<Integer> checkId = new ArrayList<Integer>();
+		for(PracticaDTO practicaDTO :prestadorDTO.getPracticasDTO()){
+			checkId.add(practicaDTO.getId());
+		}
+		return checkId;
 	}
 
 	public List<PracticaDTO> getListaPracticasDTO() {

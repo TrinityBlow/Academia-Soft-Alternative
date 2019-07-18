@@ -34,15 +34,15 @@
             </many-to-many>
         </set>
 		
-		 <list name="turnos" cascade="all" lazy="true">
+		 <bag name="turnos" cascade="all" lazy="false">
 		   <key>
 		        <column name="ID_PRESTADOR"></column>
 		   </key>
-		   <list-index>
-		        <column name="ID_TURNO"></column>
-		   </list-index>
+<!-- 		   <list-index> -->
+<!-- 		        <column name="ID_TURNO"></column> -->
+<!-- 		   </list-index> -->
 		   <one-to-many class="ar.com.academia.entities.Turno"></one-to-many>
- 		</list> 
+ 		</bag> 
 		
 	</class>
 </hibernate-mapping>

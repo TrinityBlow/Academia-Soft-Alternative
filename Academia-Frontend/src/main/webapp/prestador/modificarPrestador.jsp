@@ -14,13 +14,30 @@
 <body>
 	<h2 id="titulo"> Modificar Prestador </h2>
 	<s:form id="target" action="/updatePrestador" name="target" method="post">
-	    <s:textfield label="Nro Prestador" type="number" name="prestadorDTO.numeroPrestador"></s:textfield>
-	    <s:textfield label="Nombre:" type="text" name="prestadorDTO.nombre" ></s:textfield>
-	    <s:textfield label="Apellido:" type="text" name="prestadorDTO.apellido" ></s:textfield>
-	    <s:textfield label="Email:" type="text" name="prestadorDTO.email" ></s:textfield>
-	    <s:textfield label="Telefono:" type="number" name="prestadorDTO.telefono" ></s:textfield>
-	    <s:textfield label="Nro de Practica:" type="number" name="prestadorDTO.practica" ></s:textfield>
-	    <s:textfield label="Franja Horaria:" type="text" name="prestadorDTO.franjaHoraria" ></s:textfield>
+	    <s:textfield label="Nombre" type="text" name="prestadorDTO.nombre" ></s:textfield>
+	    <s:textfield label="Apellido" type="text" name="prestadorDTO.apellido" ></s:textfield>
+	    <s:textfield label="Email" type="text" name="prestadorDTO.email" ></s:textfield>
+	    <s:textfield label="Telefono" type="number" name="prestadorDTO.telefono" ></s:textfield>
+	    
+	    <s:checkboxlist 
+	    	list="horarios"
+	    	listKey="id"
+	    	listValue="formarHora"
+	    	label="Franja Horaria"
+	    	name="prestadorServiceDTO.horarios"
+	    	value="checkHorarios"
+	    />
+	    
+	      <s:checkboxlist 
+	    	list="practicas"
+	    	listKey="id"
+	    	listValue="descripcion"
+	    	label="Practicas"
+	    	name="prestadorServiceDTO.practicas"
+	    	value="checkPracticas"
+	    />
+	    
+	   
 	    <br><br>
 	    <s:submit label="Modificar Prestador"></s:submit>
 	</s:form> 

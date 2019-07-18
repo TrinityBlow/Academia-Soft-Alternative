@@ -1,24 +1,36 @@
 package ar.com.softtek.academia.backend.bo.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import ar.com.academia.dto.PlanDTO;
 import ar.com.academia.dto.SocioDTO;
-import ar.com.academia.dto.TurnoDTO;
 import ar.com.academia.dto.service.SocioServiceDTO;
+import ar.com.academia.entities.Plan;
+import ar.com.academia.entities.Socio;
 import ar.com.academia.entities.exception.BusinessException;
 import ar.com.academia.entities.exception.PersistenceException;
-import ar.com.softtek.academia.backend.bo.PlanBO;
 import ar.com.softtek.academia.backend.bo.SocioBO;
+import ar.com.softtek.academia.backend.dao.PlanDAO;
 import ar.com.softtek.academia.backend.dao.SocioDAO;
 
 
 public class SocioBOImpl implements SocioBO {
 
 	private SocioDAO socioDAO;
-	private PlanBO planBO;
+	private PlanDAO planDAO;
 	
+
+
+	public PlanDAO getPlanDAO() {
+		return planDAO;
+	}
+
+	public void setPlanDAO(PlanDAO planDAO) {
+		this.planDAO = planDAO;
+	}
+
+	public SocioDAO getSocioDAO() {
+		return socioDAO;
+	}
 
 	public SocioDTO getSocioById(int id) throws BusinessException {
 		try{
@@ -39,23 +51,24 @@ public class SocioBOImpl implements SocioBO {
 
 	public SocioDTO crearSocio(SocioServiceDTO entidad) throws BusinessException {
 		try{
-			PlanDTO buscarPlan = planBO.getPlanById(entidad.getPlanDTO());
-			SocioDTO socioDTO = new SocioDTO();
+			Plan buscarPlan = planDAO.getById(entidad.getPlanDTO());
+			Socio socio = new Socio();
 			
-			socioDTO.setApellido(entidad.getApellido());
-			socioDTO.setCantidadHijos(entidad.getCantidadHijos());
-			socioDTO.setDireccion(entidad.getDireccion());
-			socioDTO.setDni(entidad.getDni());
-			socioDTO.setEmail(entidad.getEmail());
-			socioDTO.setEstadoCivil(entidad.getEstadoCivil());
-			socioDTO.setNombre(entidad.getNombre());
-			socioDTO.setNombreConyuge(entidad.getNombreConyuge());
-			socioDTO.setNumeroSocio(entidad.getNumeroSocio());
-			socioDTO.setPlanDTO(buscarPlan);
-			socioDTO.setSexo(entidad.getSexo());
-			socioDTO.setTelefono(entidad.getTelefono());
+			socio.setApellido(entidad.getApellido());
+			socio.setCantidadHijos(entidad.getCantidadHijos());
+			socio.setDireccion(entidad.getDireccion());
+			socio.setDni(entidad.getDni());
+			socio.setEmail(entidad.getEmail());
+			socio.setEstadoCivil(entidad.getEstadoCivil());
+			socio.setNombre(entidad.getNombre());
+			socio.setNombreConyuge(entidad.getNombreConyuge());
+			socio.setNumeroSocio(entidad.getNumeroSocio());
+			socio.setSexo(entidad.getSexo());
+			socio.setTelefono(entidad.getTelefono());
+
+			socio.setPlan(buscarPlan);
 			
-			SocioDTO socioDTOCreado = socioDAO.saveSocio(socioDTO);
+			SocioDTO socioDTOCreado = socioDAO.saveSocio(socio);
 			
 			return socioDTOCreado;
 		} catch (PersistenceException  e){
@@ -116,16 +129,9 @@ public class SocioBOImpl implements SocioBO {
 		}
 	}
 
-	public PlanBO getPlanBO() {
-		return planBO;
-	}
-
-	public void setPlanBO(PlanBO planBO) {
-		this.planBO = planBO;
-	}
-
 	@Override
-	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB, int dniB, int nroAfiB) throws BusinessException {
+	public List<SocioDTO> buscarSocios(String nombreB, String apellidoB,
+			String dniB, int nroAfiB) throws BusinessException {
 		try{
 			List<SocioDTO> sociosBusqueda = socioDAO.buscarSocios(nombreB, apellidoB, dniB, nroAfiB);
 			return sociosBusqueda;
@@ -133,6 +139,9 @@ public class SocioBOImpl implements SocioBO {
 			throw new BusinessException();
 		}
 	}
+
+	
+	
 
 	
 	/*

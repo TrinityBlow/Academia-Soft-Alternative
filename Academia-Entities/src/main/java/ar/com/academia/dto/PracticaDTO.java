@@ -5,7 +5,7 @@ import java.util.List;
 public class PracticaDTO {
 
     private int id;
-    private float codigo;
+    private  String codigo;
     private String descripcion;
     private List<TurnoDTO> turnosDTO;
     private List<PrestadorDTO> prestadoresDTO;
@@ -16,12 +16,6 @@ public class PracticaDTO {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public float getCodigo() {
-		return codigo;
-	}
-	public void setCodigo(float codigo) {
-		this.codigo = codigo;
 	}
 	public String getDescripcion() {
 		return descripcion;
@@ -44,6 +38,12 @@ public class PracticaDTO {
 	 public String toString(){
 	    	return this.getDescripcion();
 	 }
+	public String getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
     
     
 

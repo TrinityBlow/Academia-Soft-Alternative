@@ -25,7 +25,7 @@
 		</many-to-one>
 		
 		<one-to-one name="reserva" class="ar.com.academia.entities.Reserva"
-			cascade="save-update" lazy="false"></one-to-one>
+			cascade="all" lazy="false"></one-to-one>
 			
 	</class>
 	

@@ -1,0 +1,4 @@
+<validator type="required" short-circuit="true">
+  <param name="fieldName">turnoServiceDTO.observaciones</param>
+  <message>You must enter a value for Observacion.</message>
+</validator>
